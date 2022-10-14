@@ -1,1 +1,1 @@
-export const components = 'Components'; //! Test file.
+export * from './header'

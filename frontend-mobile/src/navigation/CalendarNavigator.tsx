@@ -3,6 +3,7 @@ import { createStackNavigator, StackNavigationProp } from '@react-navigation/sta
 import { RouteProp } from '@react-navigation/native';
 import { CalendarRoutes, CalendarNavigatorParams } from '@pf/constants';
 import { CalendarScreen } from '@pf/screens';
+import { HeaderRight, HeaderTitle } from '@pf/components';
 
 const Stack = createStackNavigator();
 type StackNavigatorProps = React.ComponentProps<typeof Stack.Navigator>;
@@ -16,8 +17,18 @@ export interface CalendarScreenProps<Screen extends keyof CalendarNavigatorParam
 
 const CalendarNavigator: React.FC = (props: Partial<StackNavigatorProps>) => {
   return (
-    <Stack.Navigator initialRouteName={CALENDAR} screenOptions={{ headerShown: false }} {...props}>
-      <Stack.Screen name={CALENDAR} component={CalendarScreen} />
+    <Stack.Navigator
+      initialRouteName={CALENDAR}
+      screenOptions={{ headerShown: true, headerTitleAlign: 'center' }}
+      {...props}>
+      <Stack.Screen
+        name={CALENDAR}
+        component={CalendarScreen}
+        options={{
+          headerTitle: () => <HeaderTitle></HeaderTitle>,
+          headerRight: () => <HeaderRight></HeaderRight>,
+        }}
+      />
     </Stack.Navigator>
   );
 };

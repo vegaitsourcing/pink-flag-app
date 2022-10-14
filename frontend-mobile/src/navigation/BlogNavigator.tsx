@@ -3,6 +3,7 @@ import { createStackNavigator, StackNavigationProp } from '@react-navigation/sta
 import { RouteProp } from '@react-navigation/native';
 import { BlogRoutes, BlogNavigatorParams } from '@pf/constants';
 import { BlogScreen } from '@pf/screens';
+import { HeaderRight, HeaderTitle } from '@pf/components';
 
 const Stack = createStackNavigator();
 type StackNavigatorProps = React.ComponentProps<typeof Stack.Navigator>;
@@ -16,8 +17,18 @@ export interface BlogScreenProps<Screen extends keyof BlogNavigatorParams> {
 
 const BlogNavigator: React.FC = (props: Partial<StackNavigatorProps>) => {
   return (
-    <Stack.Navigator initialRouteName={BLOG} screenOptions={{ headerShown: false }} {...props}>
-      <Stack.Screen name={BLOG} component={BlogScreen} />
+    <Stack.Navigator
+      initialRouteName={BLOG}
+      screenOptions={{ headerShown: true, headerTitleAlign: 'center' }}
+      {...props}>
+      <Stack.Screen
+        name={BLOG}
+        component={BlogScreen}
+        options={{
+          headerTitle: () => <HeaderTitle></HeaderTitle>,
+          headerRight: () => <HeaderRight></HeaderRight>,
+        }}
+      />
     </Stack.Navigator>
   );
 };
