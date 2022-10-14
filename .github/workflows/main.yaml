@@ -35,7 +35,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           source: "./backend/docker-compose.pink-flag.yaml"
-          target: "./pink-flag-app/docker-compose.pink-flag.yaml"
+          target: "./Projects/pink-flag-app/docker-compose.pink-flag.yaml"
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
@@ -43,4 +43,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: docker-compose -f docker-compose.pink-flag.yaml up -d
+          script: docker-compose -f ./Projects/pink-flag-app/docker-compose.pink-flag.yaml up -d
