@@ -1,0 +1,1 @@
+from .blog_page import BlogPage
