@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+
+echo "\n╔═══════════════════ STATIC CHECKS ═══════════════════╗"
+
+echo "╠═══\t[$] Checking for circular dependencies.\n"
+yarn dependency:check
+echo "\n╠═══\t✅ No circular dependencies.\t═══╗\n╚══════════════════════════════════════════╝"
+
+echo "\n\n╠═══\t[$] Checking for type issues.\n"
+yarn type:check
+echo "\n╠═══\t✅ No types issues.\t═══╗\n╚══════════════════════════════════╝"
+
+echo "\n\n╠═══\t[$] Checking for javascript issues.\n"
+yarn code:check
+echo "\n╠═══\t✅ No javascript issues.\t═══╗\n╚══════════════════════════════════════════╝"
+
+# echo "\n\n╠═══\t[$] Running tests.\n"
+# yarn test
+# echo "\n╠═══\t✅ Successfully runned tests.\t═══╗\n╚══════════════════════════════════════════╝"
+
+echo "\n\n╠═══\t[$] Formatting code.\n"
+yarn code:format
+echo "\n╠═══\t✅ Successfully formatted the code. 🚀\t═══╗\n╚══════════════════════════════════════════════════╝"
+
+
