@@ -44,10 +44,12 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'core',
-
+    'ckeditor',
     'cms',
     'menus',
     'treebeard',
+
+    'base.apps.BaseConfig'
 ]
 
 MIDDLEWARE = [
@@ -135,8 +137,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+# }
+
 STATIC_URL = 'static/'
 
+MEDIA_URL = '/images/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
+MEDIA_ROOT = 'static/images'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
