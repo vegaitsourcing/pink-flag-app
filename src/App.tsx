@@ -1,11 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { RootNavigator } from '@pf/navigation';
 
 const App: React.FC = () => {
   return (
-    <View>
-      <Text>Welcome to the Pink Flag Application</Text>
-    </View>
+    <NavigationContainer>
+      <RootNavigator />
+    </NavigationContainer>
   );
 };
 
