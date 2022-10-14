@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print
-        run: ls
+        run: ls && pwd
       - name: Building docker image
         run: docker build ./backend/ -t codeforacause/pink-flag-app:${{ github.run_number }}
       - name: Login to Docker Hub
