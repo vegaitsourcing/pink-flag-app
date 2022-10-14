@@ -28,7 +28,7 @@ jobs:
         env:
           TAG_NUMBER: "${{ github.run_number }}"
       - name: executing remote ssh commands using password
-        uses: ./
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
