@@ -3,6 +3,8 @@ import { createStackNavigator, StackNavigationProp } from '@react-navigation/sta
 import { RouteProp } from '@react-navigation/native';
 import { HomeNavigatorParams, HomeRoutes } from '@pf/constants';
 import { HomeScreen } from '@pf/screens';
+import { Image, Text, View } from 'react-native';
+import { HeaderTitle, HeaderRight } from '@pf/components';
 
 const Stack = createStackNavigator();
 type StackNavigatorProps = React.ComponentProps<typeof Stack.Navigator>;
@@ -16,8 +18,18 @@ export interface HomeScreenProps<Screen extends keyof HomeNavigatorParams> {
 
 const HomeNavigator: React.FC = (props: Partial<StackNavigatorProps>) => {
   return (
-    <Stack.Navigator initialRouteName={HOME} screenOptions={{ headerShown: false }} {...props}>
-      <Stack.Screen name={HOME} component={HomeScreen} />
+    <Stack.Navigator
+      initialRouteName={HOME}
+      screenOptions={{ headerShown: true, headerTitleAlign: 'center' }}
+      {...props}>
+      <Stack.Screen
+        name={HOME}
+        component={HomeScreen}
+        options={{
+          headerTitle: () => <HeaderTitle></HeaderTitle>,
+          headerRight: () => <HeaderRight></HeaderRight>,
+        }}
+      />
     </Stack.Navigator>
   );
 };

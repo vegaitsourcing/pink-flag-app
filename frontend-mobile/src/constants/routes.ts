@@ -1,9 +1,9 @@
 export const RootRoutes = {
   WELCOME_SCREEN_ENTER_LINK: 'welcome-screen-enter-link',
-  HOME_STACK: 'home-stack',
-  BLOG_STACK: 'blog-stack',
-  CALENDAR_STACK: 'calendar-stack',
-  DONATION: 'donation',
+  HOME_STACK: 'Početna',
+  BLOG_STACK: 'Blog',
+  CALENDAR_STACK: 'Kalendar',
+  DONATION: 'Donacije',
 } as const;
 
 export const HomeRoutes = {
