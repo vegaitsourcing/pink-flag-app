@@ -24,7 +24,7 @@ jobs:
         with:
           tokenPrefix: '#{'
           tokenSuffix: '}#'
-          files: '["**/backend/docker-compose.ping-flag.yaml"]'
+          files: '["**/backend/docker-compose.pink-flag.yaml"]'
         env:
           TAG_NUMBER: "${{ github.run_number }}"
       - name: copy file via ssh password
@@ -35,7 +35,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           source: "./backend/docker-compose.pink-flag.yaml"
-          target: "./Projects/pink-flag-app/docker-compose.pink-flag.yaml"
+          target: "./Projects/pink-flag-app/"
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
@@ -43,4 +43,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: docker-compose -f ./Projects/pink-flag-app/docker-compose.pink-flag.yaml up -d
+          script: docker-compose -f ./Projects/pink-flag-app/backend/docker-compose.pink-flag.yaml up -d
