@@ -1,12 +1,11 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React, { useState, useEffect } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { AppTheme } from '@pf/theme';
 import { BlogModel } from '@pf/models';
 import { StyledText } from '../CustomText/styles';
-import { FlatList } from 'react-native-gesture-handler';
 import { BlogSmallModule } from '../BlogSmallModule';
 import { Pagination } from '../Pagination';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 const mockedBlogModel: BlogModel = {
   title: 'Prva srednja škola koja je uvela besplatne higijenske uloške',

@@ -9,3 +9,4 @@ export { Pagination } from './Pagination';
 export { HomeCalendar } from './HomeCalendar';
 export { DonateBanner } from './DonateBanner';
 export { Footer } from './Footer';
+export { HomeNews } from './HomeNews';
