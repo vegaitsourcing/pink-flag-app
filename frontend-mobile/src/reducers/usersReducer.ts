@@ -1,12 +1,17 @@
+// Slice
 import { createSlice } from '@reduxjs/toolkit';
 
-// Slice
+interface UserState {
+  users: [];
+}
 
-const slice = createSlice({
+const initialState: UserState = {
+  users: [],
+};
+
+const usersSlice = createSlice({
   name: 'users',
-  initialState: {
-    users: [],
-  },
+  initialState,
   reducers: {
     getUsers: (
       state,
@@ -19,4 +24,4 @@ const slice = createSlice({
   },
 });
 
-export const usersReducer = slice.reducer;
+export default usersSlice.reducer;

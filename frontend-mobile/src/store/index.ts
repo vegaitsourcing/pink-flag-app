@@ -1,15 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { usersReducer } from '@pf/reducers';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { blogsApi } from '@pf/services';
+import { usersReducer } from '@pf/reducers';
+import { rootApi } from '@pf/services';
 
 export const store = configureStore({
   reducer: {
     users: usersReducer,
-    [blogsApi.reducerPath]: blogsApi.reducer,
+    [rootApi.reducerPath]: rootApi.reducer,
   },
 
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(blogsApi.middleware),
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(rootApi.middleware),
 });
 
 setupListeners(store.dispatch);
