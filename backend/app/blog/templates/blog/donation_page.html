@@ -10,11 +10,7 @@
 
     {% image page.image fill-320x240 %}
 
-    <article>
-        {% for block in page.body %}
-            <section>{% include_block block %}</section>
-        {% endfor %}
-    </article>
+    <div class="body">{{ page.body|richtext }}</div>
 
     <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
 

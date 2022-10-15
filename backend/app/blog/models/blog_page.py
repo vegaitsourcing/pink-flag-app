@@ -1,11 +1,8 @@
 from django.db import models
 
-from modelcluster.fields import ParentalKey
-
-from wagtail.models import Page, Orderable
+from wagtail.models import Page
 from wagtail.fields import StreamField
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
-from wagtail.search import index
+from wagtail.admin.panels import FieldPanel
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.api import APIField
