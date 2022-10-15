@@ -6,6 +6,7 @@ import { StyledText } from '../CustomText/styles';
 import { FlatList } from 'react-native-gesture-handler';
 import { BlogSmallModule } from '../BlogSmallModule';
 import { Pagination } from '../Pagination';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const mockedBlogModel: BlogModel = {
   title: 'Prva srednja škola koja je uvela besplatne higijenske uloške',
