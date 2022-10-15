@@ -13,14 +13,13 @@ from app.settings import GOOGLE_CLIENT_ID
 
 HTTP_AUTHORIZATION = "HTTP_AUTHORIZATION"
 
+
 class ConsumerView(APIView):
 
     def post(self, request: Request):
         token = request.META.get(HTTP_AUTHORIZATION).split(" ")[1]
         idinfo = id_token.verify_oauth2_token(token, requests.Request(), GOOGLE_CLIENT_ID)
         email = idinfo['email']
-
-        print(request.data)
         data = request.data
         data['email'] = email
         

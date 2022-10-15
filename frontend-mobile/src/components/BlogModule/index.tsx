@@ -1,7 +1,7 @@
 import React from 'react';
 import { BlogCard } from './utils/styles';
 import { Image, View, StyleSheet } from 'react-native';
-import { StyledText } from '../CustomText/styles';
+import { CustomText } from '../CustomText';
 import { AppTheme } from '@pf/theme';
 import { BlogModel } from '@pf/models';
 
@@ -9,16 +9,16 @@ export interface BlogModuleProps {
   blogModel: BlogModel;
 }
 
-export const BlogModule: React.FC<BlogModuleProps> = (props: BlogModuleProps) => {
+export const BlogModule: React.FC<BlogModuleProps> = ({ blogModel: { date, title, type } }) => {
   return (
     <BlogCard style={styles.BlogCardStyle}>
       <View style={styles.cardContainer}>
         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
         <Image style={styles.cardImage} source={require('../../assets/images/blog-card-example.png')}></Image>
         <View style={styles.cardBody}>
-          <StyledText style={styles.label}>{props.blogModel.type}</StyledText>
-          <StyledText style={styles.date}>{props.blogModel.date}</StyledText>
-          <StyledText style={styles.titleText}>{props.blogModel.title}</StyledText>
+          <CustomText style={styles.label}>{type}</CustomText>
+          <CustomText style={styles.date}>{date}</CustomText>
+          <CustomText style={styles.titleText}>{title}</CustomText>
         </View>
       </View>
     </BlogCard>

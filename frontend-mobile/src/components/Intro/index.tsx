@@ -1,8 +1,7 @@
-import { useTheme } from '@emotion/react';
 import { AppTheme } from '@pf/theme';
 import React from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
-import { StyledText } from '../CustomText/styles';
+import { CustomText } from '../CustomText';
 import { UiButton } from '../UiButton';
 
 interface Props {
@@ -42,18 +41,17 @@ const styles = StyleSheet.create({
 });
 
 export const Intro = ({ buttonData, heading, subheading }: Props): JSX.Element => {
-  const theme = useTheme();
   return (
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     <ImageBackground source={require('../../assets/images/intro-background.png')}>
       <View style={styles.container}>
-        <StyledText style={styles.baseText}>{heading}</StyledText>
-        <StyledText style={styles.innerText}>{subheading}</StyledText>
+        <CustomText style={styles.baseText}>{heading}</CustomText>
+        <CustomText style={styles.innerText}>{subheading}</CustomText>
         <View style={styles.buttonContainer}>
           <UiButton
-            backgroundColor={theme.colors.white}
-            color={theme.colors.description}
-            fontSize={theme.fontSize.$4Number}
+            backgroundColor={AppTheme.colors.white}
+            color={AppTheme.colors.description}
+            fontSize={AppTheme.fontSize.$4Number}
             fontWeight={'bold'}
             title={buttonData.title}
             onPress={() => console.log('test')}
