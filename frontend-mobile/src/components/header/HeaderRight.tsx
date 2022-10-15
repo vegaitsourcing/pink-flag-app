@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { SettingsSvg } from '@pf/assets';
 import React, { useState } from 'react';
-import { StyleSheet, View, Image, Pressable } from 'react-native';
+import { StyleSheet, View, Pressable } from 'react-native';
 import { Settings } from './Settings';
 
 export const HeaderRight: React.FC = () => {
@@ -18,7 +19,7 @@ export const HeaderRight: React.FC = () => {
     <>
       <Pressable onPress={openModal}>
         <View style={styles.imageContainer}>
-          <Image source={require('../../assets/icons/settings.png')}></Image>
+          <SettingsSvg />
         </View>
       </Pressable>
       <Settings closeModal={closeModal} modalIsVisible={modalVisible}></Settings>
