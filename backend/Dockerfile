@@ -13,4 +13,3 @@ RUN pip install -r requirements.txt
 
 COPY ./app .
 
-CMD ["tail", "-f", "/dev/null"]
