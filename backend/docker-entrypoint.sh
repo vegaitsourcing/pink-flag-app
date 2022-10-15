@@ -5,4 +5,4 @@ echo "Apply database migrations"
 python manage.py migrate
 
 #Start server
-gunicorn manage.py runserver 0.0.0.0:80
+gunicorn app.wsgi:application --bind 0.0.0.0:8000
