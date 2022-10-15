@@ -35,9 +35,7 @@ export const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, 
           }
         };
 
-        return (
-          <NavButton key={displayName} icon={<Icon />} content={displayName} onPress={onPress} isFocused={isFocused} />
-        );
+        return <NavButton key={index} icon={<Icon />} content={displayName} onPress={onPress} isFocused={isFocused} />;
       })}
     </Container>
   );
