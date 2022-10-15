@@ -88,6 +88,26 @@ interface Theme {
     /** unit(32) */
     $5: string;
   };
+  fontWeight: {
+    /** 100 */
+    $100Number: number;
+    /** 200 */
+    $200Number: number;
+    /** 300 */
+    $300Number: number;
+    /** 400 */
+    $400Number: number;
+    /** 500 */
+    $500Number: number;
+    /** 600 */
+    $600Number: number;
+    /** 700 */
+    $700Number: number;
+    /** 800 */
+    $800Number: number;
+    /** 900 */
+    $900Number: number;
+  };
 }
 
 export { Theme };
