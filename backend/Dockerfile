@@ -12,5 +12,6 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY ./app .
+COPY ./docker-entrypoint.sh docker-entrypoint.sh
 
-ENTRYPOINT [ "sh","./app/docker-entrypoint.sh" ] 
+ENTRYPOINT [ "sh","./docker-entrypoint.sh" ] 
