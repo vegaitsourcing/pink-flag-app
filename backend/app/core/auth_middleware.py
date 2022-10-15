@@ -1,7 +1,5 @@
-from google.oauth2 import id_token
-from google.auth.transport import requests
 from core.models import Consumer
-from app.settings import GOOGLE_CLIENT_ID
+import jwt
 
 HTTP_AUTHORIZATION = "HTTP_AUTHORIZATION"
 
@@ -10,18 +8,17 @@ class AuthMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        token = request.META.get(HTTP_AUTHORIZATION).split(" ")[1]
-        try:
-            idinfo = id_token.verify_oauth2_token(token, requests.Request(), GOOGLE_CLIENT_ID)
-            email = idinfo['email']
-            consumer = Consumer.objects.get(email=email)
-            # consumer = Consumer(email=email, enable_notifications=True)
-            # consumer.save()
-            print(consumer)
+        bearer_token = request.META.get(HTTP_AUTHORIZATION, None)
+        if bearer_token is None:
+            response = self.get_response(request)
+            return response
+        token = bearer_token.split(" ")[1]
+        idinfo = jwt.decode(token, options={"verify_signature": False})
+        email = idinfo['email']
 
-            request.user = consumer
-        except ValueError as e:
-            print(e)
+        consumer = Consumer.objects.filter(email=email).first()
+        if consumer:
+            request._force_auth_user = consumer
 
         response = self.get_response(request)
 
