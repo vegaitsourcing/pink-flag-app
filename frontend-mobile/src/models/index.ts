@@ -1,1 +1,1 @@
-export const models = 'Models'; //! Test file.
+export { BlogModel } from './BlogModel';

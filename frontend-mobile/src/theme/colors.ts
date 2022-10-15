@@ -6,3 +6,5 @@ export const WHITE = '#FFFFFF';
 export const SUCCESS = '#A2D17D'; //! Needs to be checked
 export const WARNING = '#ffae00'; //! Needs to be checked
 export const DANGER = '#d52c63'; //! Needs to be checked
+export const LABEL = '#9FB2DC';
+export const BLACK = '#180A0A';
