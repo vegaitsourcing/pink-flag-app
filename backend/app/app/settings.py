@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'core',
     'content_ui',
     'blog',
+    'pink_flag_calendar',
 
     # 3rd party
     'rest_framework',
