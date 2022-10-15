@@ -10,7 +10,8 @@ from blog.api import api_router
 
 api_urlpattern = [
     path('v2/', api_router.urls),
-    path('core/', include('core.urls'))
+    path('core/', include('core.urls')),
+    path('calendar/', include('pink_flag_calendar.urls'))
 ]
 
 urlpatterns = [
