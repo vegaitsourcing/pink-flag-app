@@ -28,9 +28,12 @@ GOOGLE_CLIENT_ID = "300541895467-e9ho3qcv2v9f8mbrsf71u6grbmpgfj6f.apps.googleuse
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['*', ]
-# CSRF_TRUSTED_ORIGINS = ['*',]
-
+ALLOWED_HOSTS = ['*', ]
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost',
+    'http://127.0.0.1', 
+    'https://pinkflag.codeforacause.rs',
+]
 
 # Application definition
 
