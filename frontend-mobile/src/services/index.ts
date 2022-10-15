@@ -1,1 +1,4 @@
-export const services = 'Services'; //! Test file.
+export { rootApi } from './rootApi';
+
+//! Data hooks
+export { useGetUserByIdQuery } from './usersApi';
