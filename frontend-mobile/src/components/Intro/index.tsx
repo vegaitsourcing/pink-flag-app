@@ -1,7 +1,7 @@
 import { AppTheme } from '@pf/theme';
 import React from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
-import { StyledText } from '../CustomText/styles';
+import { CustomText } from '../CustomText';
 import { UiButton } from '../UiButton';
 
 interface Props {
@@ -45,8 +45,8 @@ export const Intro = ({ buttonData, heading, subheading }: Props): JSX.Element =
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     <ImageBackground source={require('../../assets/images/intro-background.png')}>
       <View style={styles.container}>
-        <StyledText style={styles.baseText}>{heading}</StyledText>
-        <StyledText style={styles.innerText}>{subheading}</StyledText>
+        <CustomText style={styles.baseText}>{heading}</CustomText>
+        <CustomText style={styles.innerText}>{subheading}</CustomText>
         <View style={styles.buttonContainer}>
           <UiButton
             backgroundColor={AppTheme.colors.white}
