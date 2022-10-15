@@ -1,10 +1,11 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
+import Intro from 'src/components/Intro';
 
 export const HomeScreen: React.FC = () => {
   return (
     <View>
-      <Text>HomeScreen</Text>
+      <Intro heading="Pink Flag" subheading="Subheading text" buttonData={{ link: '/', title: 'Saznaj vise o nama' }} />
     </View>
   );
 };
