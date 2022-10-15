@@ -2,8 +2,7 @@ version: "3.4"
 
 services:
   web:
-    build: .
-    image: codeforacause/pink-flag-app:latest
+    image: codeforacause/pink-flag-app:#{TAG_NUMBER}#
     container_name: pink-flag-app
     ports:
       - "8000:80"
