@@ -54,4 +54,15 @@ export const AppTheme: Theme = {
     label: LABEL,
     black: BLACK,
   },
+  fontWeight: {
+    $100Number: 100,
+    $200Number: 200,
+    $300Number: 300,
+    $400Number: 400,
+    $500Number: 500,
+    $600Number: 600,
+    $700Number: 700,
+    $800Number: 800,
+    $900Number: 900,
+  },
 };

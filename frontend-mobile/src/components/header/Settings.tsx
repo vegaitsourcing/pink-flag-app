@@ -2,7 +2,7 @@ import { AppTheme } from '@pf/theme';
 import React, { useState } from 'react';
 import { Modal, StyleSheet, Switch, View, Pressable } from 'react-native';
 import { ExitSvg } from '../../assets';
-import { StyledText } from '../CustomText/styles';
+import { CustomText } from '../CustomText';
 import { UiButton } from '../UiButton';
 
 export interface SettingsProps {
@@ -23,12 +23,12 @@ export const Settings: React.FC<SettingsProps> = (props: SettingsProps) => {
         </Pressable>
 
         <View style={styles.titleContainer}>
-          <StyledText style={styles.titleText}>Podešavanja</StyledText>
+          <CustomText style={styles.titleText}>Podešavanja</CustomText>
         </View>
 
         <View style={styles.settingsItemsContainer}>
           <View style={styles.settingsItemContainer}>
-            <StyledText style={styles.settingsItemText}>Notifikacija za novi post?</StyledText>
+            <CustomText style={styles.settingsItemText}>Notifikacija za novi post?</CustomText>
             <Switch
               trackColor={{ false: AppTheme.colors.success, true: AppTheme.colors.success }}
               thumbColor={AppTheme.colors.white}
