@@ -4,6 +4,8 @@ from wagtail.admin.panels import FieldPanel
 
 
 class BlogIndexPage(Page):
+    max_count = 1
+
     intro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
