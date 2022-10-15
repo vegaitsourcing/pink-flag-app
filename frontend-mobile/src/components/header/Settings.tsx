@@ -10,13 +10,13 @@ export interface SettingsProps {
   closeModal: () => void;
 }
 
-export const Settings: React.FC<SettingsProps> = (props: SettingsProps) => {
+export const Settings: React.FC<SettingsProps> = ({ modalIsVisible, closeModal }: SettingsProps) => {
   const [notificationStatus, setNotificationStatus] = useState(false);
 
   return (
-    <Modal visible={props.modalIsVisible}>
+    <Modal visible={modalIsVisible}>
       <View style={styles.settingsContainer}>
-        <Pressable onPress={props.closeModal}>
+        <Pressable onPress={closeModal}>
           <View style={styles.exitIconContainer}>
             <ExitSvg></ExitSvg>
           </View>
