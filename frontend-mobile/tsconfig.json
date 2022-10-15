@@ -6,7 +6,8 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
-    "jsx": "react-native",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
     "lib": ["ES2021"],
     "types": ["react-native", "jest"],
     "moduleResolution": "node",
@@ -25,8 +26,9 @@
       "@pf/screens": ["./src/screens"],
       "@pf/services": ["./src/services"],
       "@pf/store": ["./src/store"],
-      "@pf/styles": ["./src/styles"],
-      "@pf/utils": ["./src/utils"]
+      "@pf/theme": ["./src/theme"],
+      "@pf/utils": ["./src/utils"],
+      "@pf/assets": ["./src/assets"]
     }
   },
   "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]

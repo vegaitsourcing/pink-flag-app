@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)sm-2ztn1z76kl5e#qz=r!1z!7dc8tuj&j@bi0lyqyhsz=%q88
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*', ]
 
 
 # Application definition
@@ -41,13 +41,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    # eth part
     'rest_framework',
-
-    'core',
-
     'cms',
     'menus',
     'treebeard',
+
+    # apps
+    'core',
+    'content_ui',
+
+
 ]
 
 MIDDLEWARE = [
@@ -146,4 +150,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'core.User'
 
 SITE_ID = 1
-

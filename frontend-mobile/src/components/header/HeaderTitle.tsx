@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 
-const settings_icon = '../../assets/icons/settings.png';
+// const settings_icon = '../../assets/icons/settings.png';
 
 export const HeaderTitle: React.FC = () => {
   return (
@@ -19,4 +20,3 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 });
-
