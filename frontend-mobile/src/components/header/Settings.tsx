@@ -1,6 +1,6 @@
 import { AppTheme } from '@pf/theme';
 import React, { useState } from 'react';
-import { Modal, StyleSheet, Text, Switch, View, Pressable } from 'react-native';
+import { Modal, StyleSheet, Switch, View, Pressable } from 'react-native';
 import { ExitSvg } from '../../assets';
 import { StyledText } from '../CustomText/styles';
 import { UiButton } from '../UiButton';
