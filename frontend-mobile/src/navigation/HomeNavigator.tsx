@@ -3,7 +3,6 @@ import { createStackNavigator, StackNavigationProp } from '@react-navigation/sta
 import { RouteProp } from '@react-navigation/native';
 import { HomeNavigatorParams, HomeRoutes } from '@pf/constants';
 import { HomeScreen } from '@pf/screens';
-import { Image, Text, View } from 'react-native';
 import { HeaderTitle, HeaderRight } from '@pf/components';
 
 const Stack = createStackNavigator();
