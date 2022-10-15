@@ -28,7 +28,11 @@ SECRET_KEY = 'django-insecure-)sm-2ztn1z76kl5e#qz=r!1z!7dc8tuj&j@bi0lyqyhsz=%q88
 DEBUG = True
 
 ALLOWED_HOSTS = ['*', ]
-CSRF_TRUSTED_ORIGINS = ['*',]
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost',
+    'http://127.0.0.1', 
+    'https://pinkflag.codeforacause.rs',
+]
 
 
 # Application definition
