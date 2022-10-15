@@ -7,3 +7,5 @@ export { BlogSmallModule } from './BlogSmallModule';
 export { BlogListModule } from './BlogListModule';
 export { Pagination } from './Pagination';
 export { HomeCalendar } from './HomeCalendar';
+export { DonateBanner } from './DonateBanner';
+export { Footer } from './Footer';
