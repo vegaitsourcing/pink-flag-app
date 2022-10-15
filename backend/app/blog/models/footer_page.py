@@ -9,13 +9,6 @@ from wagtail.api import APIField
 class FooterPage(Page):
     max_count = 1
 
-    image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
 
    
     location = models.CharField(max_length=50, blank=True, null=True)
@@ -26,7 +19,7 @@ class FooterPage(Page):
 
 
     content_panels = Page.content_panels + [
-        FieldPanel('image'),
+        
         FieldPanel('location'),
         FieldPanel('email'),
         FieldPanel('instagram_profile_url'),
@@ -35,7 +28,7 @@ class FooterPage(Page):
     ]
 
     api_fields = [
-        APIField('image'),
+     
         APIField('location'),
         APIField('email'),
         APIField('instagram_profile_url'),
