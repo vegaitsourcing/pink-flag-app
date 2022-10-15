@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container } from './style';
+import { ViewProps } from 'react-native';
 
-interface Props {
+interface Props extends ViewProps {
   content?: string;
 }
 

@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React from 'react';
 import { BlogSmallCard } from './utils/styles';
 import { Image, View, StyleSheet } from 'react-native';
-import { StyledText } from '../CustomText/styles';
+import { CustomText } from '../CustomText';
 import { AppTheme } from '@pf/theme';
 import { BlogModel } from '@pf/models';
 
@@ -9,7 +10,7 @@ export interface BlogSmallModuleProps {
   blogModel: BlogModel;
 }
 
-export const BlogSmallModule: React.FC<BlogSmallModuleProps> = (props: BlogSmallModuleProps) => {
+export const BlogSmallModule: React.FC<BlogSmallModuleProps> = ({ blogModel: { date, title } }) => {
   return (
     <BlogSmallCard style={styles.BlogSmallCardStyle}>
       <View style={styles.imageContainer}>
@@ -21,9 +22,9 @@ export const BlogSmallModule: React.FC<BlogSmallModuleProps> = (props: BlogSmall
       </View>
       <View style={styles.cardBody}>
         <View style={styles.titleTextContainer}>
-          <StyledText style={styles.titleText}>{textOverflowHelper(props.blogModel.title)}</StyledText>
+          <CustomText style={styles.titleText}>{textOverflowHelper(title)}</CustomText>
         </View>
-        <StyledText style={styles.date}>{props.blogModel.date}</StyledText>
+        <CustomText style={styles.date}>{date}</CustomText>
       </View>
     </BlogSmallCard>
   );

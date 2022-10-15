@@ -1,7 +1,7 @@
-import { View } from 'react-native';
 import React from 'react';
 import { BlogModel } from '@pf/models';
-import { BlogModule, BlogSmallModule } from '@pf/components';
+import { BlogListModule, BlogModule, BlogSmallModule } from '@pf/components';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export const BlogScreen: React.FC = () => {
   const mockedBlogModel: BlogModel = {
@@ -12,9 +12,9 @@ export const BlogScreen: React.FC = () => {
   };
 
   return (
-    <View>
+    <ScrollView>
       <BlogModule blogModel={mockedBlogModel}></BlogModule>
-      <BlogSmallModule blogModel={mockedBlogModel}></BlogSmallModule>
-    </View>
+      <BlogListModule></BlogListModule>
+    </ScrollView>
   );
 };

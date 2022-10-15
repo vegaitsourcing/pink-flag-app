@@ -1,6 +1,6 @@
-import { View } from 'react-native';
 import React from 'react';
-import { HomeCalendar, Intro } from '@pf/components';
+import { DonateBanner, Footer, HomeCalendar, Intro } from '@pf/components';
+import { ScrollView } from 'react-native-gesture-handler';
 import { useGetUserByIdQuery } from '@pf/services';
 
 export const HomeScreen: React.FC = () => {
@@ -11,9 +11,17 @@ export const HomeScreen: React.FC = () => {
   console.log('error', error);
 
   return (
-    <View>
+    <ScrollView>
       <Intro heading="Pink Flag" subheading="Subheading text" buttonData={{ link: '/', title: 'Saznaj vise o nama' }} />
       <HomeCalendar title="Moj Kalendar" subtitle="Lorem ipsum dolor sit amet" />
-    </View>
+      <DonateBanner title="Doniraj" description="Podrzi akciju i DONIRAJ" buttonTitle="Doniraj" />
+      <Footer
+        copyright="© 2022 Pink Flag. All rights reserved."
+        email="zenskainicijativa@gmail.com"
+        location="Trg Slobode 3, Novi Sad"
+        instagramLink="https://instagram.com"
+        facebookLink="https://facebook.com"
+      />
+    </ScrollView>
   );
 };

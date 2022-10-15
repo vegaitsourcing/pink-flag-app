@@ -12,7 +12,7 @@ export interface UiButtonProps {
 
 export const UiButton: React.FC<UiButtonProps> = (props: UiButtonProps) => {
   return (
-    <Pressable style={{ ...styles.button, backgroundColor: props.backgroundColor }}>
+    <Pressable onPress={props.onPress} style={{ ...styles.button, backgroundColor: props.backgroundColor }}>
       <CustomText
         style={{ ...styles.textStyle, color: props.color, fontWeight: props.fontWeight, fontSize: props.fontSize }}>
         {props.title}

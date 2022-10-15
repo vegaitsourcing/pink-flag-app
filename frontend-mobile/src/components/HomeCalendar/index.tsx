@@ -1,5 +1,8 @@
 import { useTheme } from '@emotion/react';
+import { RootNavigatorParams } from '@pf/constants';
 import { AppTheme } from '@pf/theme';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
 import { ImageBackground, StyleSheet, View } from 'react-native';
 import { StyledText } from '../CustomText/styles';
@@ -12,6 +15,7 @@ interface Props {
 
 export const HomeCalendar: React.FC<Props> = ({ title, subtitle }) => {
   const theme = useTheme();
+  const { navigate } = useNavigation<StackNavigationProp<RootNavigatorParams>>();
 
   return (
     <ImageBackground
@@ -31,7 +35,7 @@ export const HomeCalendar: React.FC<Props> = ({ title, subtitle }) => {
           fontWeight="400"
           fontSize={theme.fontSize.$3Number}
           color="black"
-          onPress={() => console.log('test')}
+          onPress={() => navigate('calendar_stack')}
         />
       </View>
     </ImageBackground>
