@@ -22,6 +22,7 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from blog.api import api_router
+from core.urls import urlpatterns as core_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('documents/', include(wagtaildocs_urls)),
     path('pages/', include(wagtail_urls)),
     path('api/v2/', api_router.urls),
+    path('todos/', include(core_urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

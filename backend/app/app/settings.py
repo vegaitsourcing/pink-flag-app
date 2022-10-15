@@ -23,12 +23,13 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-)sm-2ztn1z76kl5e#qz=r!1z!7dc8tuj&j@bi0lyqyhsz=%q88'
+GOOGLE_CLIENT_ID = "300541895467-e9ho3qcv2v9f8mbrsf71u6grbmpgfj6f.apps.googleusercontent.com"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', ]
-CSRF_TRUSTED_ORIGINS = ['*',]
+# ALLOWED_HOSTS = ['*', ]
+# CSRF_TRUSTED_ORIGINS = ['*',]
 
 
 # Application definition
@@ -71,6 +72,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'core.auth_middleware.AuthMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
