@@ -8,6 +8,7 @@ from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.search import index
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.api import APIField
 
 class BlogPage(Page):
 
@@ -36,3 +37,9 @@ class BlogPage(Page):
     ]
 
     subpage_types = ('blog.BlogPage',)
+
+    api_fields = [
+        APIField('body'),
+        APIField('category'),
+        APIField('image'),
+    ]
