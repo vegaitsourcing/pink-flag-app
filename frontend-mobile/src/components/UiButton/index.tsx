@@ -1,4 +1,5 @@
-import { StyleSheet, Text, Pressable } from 'react-native';
+import { StyleSheet, Pressable } from 'react-native';
+import { CustomText } from '../CustomText';
 
 export interface UiButtonProps {
   title: string;
@@ -12,9 +13,10 @@ export interface UiButtonProps {
 export const UiButton: React.FC<UiButtonProps> = (props: UiButtonProps) => {
   return (
     <Pressable style={{ ...styles.button, backgroundColor: props.backgroundColor }}>
-      <Text style={{ ...styles.textStyle, color: props.color, fontWeight: props.fontWeight, fontSize: props.fontSize }}>
+      <CustomText
+        style={{ ...styles.textStyle, color: props.color, fontWeight: props.fontWeight, fontSize: props.fontSize }}>
         {props.title}
-      </Text>
+      </CustomText>
     </Pressable>
   );
 };

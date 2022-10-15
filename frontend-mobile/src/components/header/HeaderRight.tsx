@@ -6,11 +6,11 @@ import { Settings } from './Settings';
 export const HeaderRight: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const openModal = () => {
+  const openModal = (): void => {
     setModalVisible(true);
   };
 
-  const closeModal = () => {
+  const closeModal = (): void => {
     setModalVisible(false);
   };
 
