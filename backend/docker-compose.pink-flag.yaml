@@ -6,8 +6,8 @@ services:
     container_name: pink-flag-app
     ports:
       - "8000:80"
-    volumes:
-      - ./app:/app
+   # volumes:
+   #   - ./app:/app
    # command: python manage.py runserver 0.0.0.0:80
     environment:
       DB_NAME: "db"

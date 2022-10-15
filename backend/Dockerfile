@@ -8,7 +8,7 @@ RUN apk add --update --no-cache --virtual .tmp-build-deps \
 
 WORKDIR /app
 
-COPY ./requirements.txt /app/
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY . .
