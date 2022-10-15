@@ -3,7 +3,7 @@ from django.db import models
 from modelcluster.fields import ParentalKey
 
 from wagtail.models import Page, Orderable
-from wagtail.fields import RichTextField, StreamField
+from wagtail.fields import StreamField
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.search import index
 from wagtail import blocks
@@ -25,7 +25,6 @@ class BlogPage(Page):
         related_name='+'
     )
     body = StreamField([
-        ('heading', blocks.CharBlock(form_classname="heading")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
     ], use_json_field=True)
