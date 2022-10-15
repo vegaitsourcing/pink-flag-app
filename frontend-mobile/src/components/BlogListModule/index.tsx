@@ -71,9 +71,9 @@ export const BlogListModule: React.FC = () => {
         </Pressable>
       </View>
 
-      <FlatList
-        data={contentList}
-        renderItem={({ item }) => <BlogSmallModule blogModel={item}></BlogSmallModule>}></FlatList>
+      {contentList.map((item, index) => (
+        <BlogSmallModule blogModel={item} key={`${item.title}_${index}`} />
+      ))}
 
       <Pagination activePage={activePage} total={total} next={nextPage} previous={previousPage}></Pagination>
     </>
