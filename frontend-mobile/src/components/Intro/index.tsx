@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Intro = ({ buttonData, heading, subheading }: Props): JSX.Element => {
+export const Intro = ({ buttonData, heading, subheading }: Props): JSX.Element => {
   return (
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     <ImageBackground source={require('../../assets/images/intro-background.png')}>
@@ -61,5 +61,3 @@ const Intro = ({ buttonData, heading, subheading }: Props): JSX.Element => {
     </ImageBackground>
   );
 };
-
-export default Intro;
