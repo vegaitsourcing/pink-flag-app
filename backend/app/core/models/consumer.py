@@ -1,5 +1,8 @@
 from django.db import models
 
 class Consumer(models.Model):
-    email = models.EmailField(primary_key=True)
-    enable_notifications = models.BooleanField(default=True)
+    email = models.EmailField(unique=True)
+    name = models.CharField(max_length = 50)
+    date_of_birth = models.DateField()
+    enable_notifications = models.BooleanField(default=True)  
+

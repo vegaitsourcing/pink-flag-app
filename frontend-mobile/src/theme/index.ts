@@ -1,6 +1,6 @@
 import { Theme } from '@emotion/react';
 import { unit } from '@pf/utils';
-import { PRIMARY, SECONDARY, WHITE, NAV, DESCRIPTION, SUCCESS, WARNING, DANGER, LABEL, BLACK } from './colors';
+import { PRIMARY, SECONDARY, WHITE, NAV, DESCRIPTION, SUCCESS, WARNING, DANGER, LABEL, BLACK, BLUE } from './colors';
 
 export const AppTheme: Theme = {
   spacing: {
@@ -53,5 +53,17 @@ export const AppTheme: Theme = {
     danger: DANGER,
     label: LABEL,
     black: BLACK,
+    blue: BLUE,
+  },
+  fontWeight: {
+    $100Number: 100,
+    $200Number: 200,
+    $300Number: 300,
+    $400Number: 400,
+    $500Number: 500,
+    $600Number: 600,
+    $700Number: 700,
+    $800Number: 800,
+    $900Number: 900,
   },
 };

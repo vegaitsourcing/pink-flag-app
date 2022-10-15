@@ -10,15 +10,6 @@ import { BottomTabBar } from '@pf/components';
 const { HOME_STACK, BLOG_STACK, CALENDAR_STACK, DONATION } = RootRoutes;
 const Tab = createBottomTabNavigator<RootNavigatorParams>();
 
-// const blog_icon = '../assets/icons/blog.png';
-// const blog_icon_active = '../assets/icons/blog_active.png';
-// const calendar_icon = '../assets/icons/calendar.png';
-// const calendar_icon_active = '../assets/icons/calendar_active.png';
-// const donate_icon = '../assets/icons/donate.png';
-// const donate_icon_active = '../assets/icons/donate_active.png';
-// import { HomeSvg, HomeFilledSvg } from '@pf/assets';
-// import { iconStyle } from './styles';
-
 export const RootNavigator: React.FC = () => {
   return (
     <Tab.Navigator tabBar={props => <BottomTabBar {...props} />} screenOptions={{ headerShown: false }}>
