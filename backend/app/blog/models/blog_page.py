@@ -23,7 +23,7 @@ class BlogPage(Page):
         related_name='+'
     )
     body = StreamField([
-        ('paragraph', blocks.RichTextBlock()),
+        ('paragraph', blocks.RichTextBlock(features=['bold', 'italic', 'link', 'ul'])),
         ('image', ImageChooserBlock()),
     ], use_json_field=True)
 
