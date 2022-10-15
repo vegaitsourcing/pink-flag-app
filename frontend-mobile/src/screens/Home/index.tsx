@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import React from 'react';
-import Intro from '../../components/Intro';
+import { Intro } from '@pf/components';
 
 export const HomeScreen: React.FC = () => {
   return (
