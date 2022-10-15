@@ -2,8 +2,6 @@
 import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 
-// const settings_icon = '../../assets/icons/settings.png';
-
 export const HeaderTitle: React.FC = () => {
   return (
     <View style={styles.logoContainer}>
