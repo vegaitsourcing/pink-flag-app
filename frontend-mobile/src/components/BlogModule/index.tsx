@@ -2,33 +2,44 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react';
 import { BlogCard } from './utils/styles';
-import { Image, View, StyleSheet } from 'react-native';
+import { Image, View, StyleSheet, Pressable } from 'react-native';
 import { CustomText } from '../CustomText';
 import { AppTheme } from '@pf/theme';
 import { useGetFeaturedBlogQuery } from '@pf/services';
 import { BASE_URI } from '../../services/rootApi';
 import { ActivityIndicatorContainer } from '@pf/components';
+import { BlogNavigatorParams } from '@pf/constants';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
 
 export const BlogModule: React.FC = () => {
   const { data, isLoading } = useGetFeaturedBlogQuery();
+  const { navigate } = useNavigation<StackNavigationProp<BlogNavigatorParams>>();
 
   return isLoading ? (
     <ActivityIndicatorContainer />
   ) : data && data.meta.total_count > 0 ? (
-    <BlogCard style={styles.BlogCardStyle}>
-      <View style={styles.cardContainer}>
-        <Image
-          style={styles.cardImage}
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-          source={{ uri: BASE_URI + data.items[0].image.meta.download_url }}
-        />
-        <View style={styles.cardBody}>
-          <CustomText style={styles.label}>{data.items[0].meta.type}</CustomText>
-          <CustomText style={styles.date}>{new Date(data.items[0].meta.first_published_at).toDateString()}</CustomText>
-          <CustomText style={styles.titleText}>{data.items[0].title}</CustomText>
+    <Pressable
+      onPress={() => {
+        navigate('blog_details', { id: data.items[0].id });
+      }}>
+      <BlogCard style={styles.BlogCardStyle}>
+        <View style={styles.cardContainer}>
+          <Image
+            style={styles.cardImage}
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            source={{ uri: BASE_URI + data.items[0].image.meta.download_url }}
+          />
+          <View style={styles.cardBody}>
+            <CustomText style={styles.label}>{data.items[0].meta.type}</CustomText>
+            <CustomText style={styles.date}>
+              {new Date(data.items[0].meta.first_published_at).toDateString()}
+            </CustomText>
+            <CustomText style={styles.titleText}>{data.items[0].title}</CustomText>
+          </View>
         </View>
-      </View>
-    </BlogCard>
+      </BlogCard>
+    </Pressable>
   ) : (
     <></>
   );
