@@ -3,26 +3,16 @@ import { useTheme } from '@emotion/react';
 import { FacebookWhiteSvg, InstagramWhiteSvg } from '@pf/assets';
 import { useGetFooterQuery } from '@pf/services';
 import React, { useEffect, useMemo } from 'react';
-import { StyleSheet, View, ImageBackground, Image } from 'react-native';
+import { StyleSheet, View, ImageBackground, Image, Pressable, Linking } from 'react-native';
+import { ActivityIndicatorContainer } from '@pf/components';
 import { CustomText } from '../CustomText';
+import { FooterModel } from '@pf/models';
 
-interface Props {
-  location: string;
-  email: string;
-  copyright: string;
-  facebookLink?: string;
-  instagramLink?: string;
-}
-
-export const Footer: React.FC<Props> = ({ location, email, copyright, facebookLink, instagramLink }) => {
-  const { data, error, isLoading } = useGetFooterQuery();
+export const Footer: React.FC = () => {
+  const { data, error, isLoading } = useGetFooterQuery<FooterModel>();
   const theme = useTheme();
   const IconInstagram = InstagramWhiteSvg;
   const IconFacebook = FacebookWhiteSvg;
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const styles = useMemo(() => {
     return StyleSheet.create({
@@ -48,21 +38,54 @@ export const Footer: React.FC<Props> = ({ location, email, copyright, facebookLi
     });
   }, [theme]);
 
-  return (
+  return isLoading ? (
+    <ActivityIndicatorContainer />
+  ) : (
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     <ImageBackground style={styles.container} resizeMode="cover" source={require('../../assets/images/footer.png')}>
       <View style={styles.viewContainer}>
-        <CustomText style={styles.baseText}>Kontakt</CustomText>
+        <CustomText style={styles.baseText}>{data.title}</CustomText>
         <View style={{ marginTop: theme.spacing.$1Number, flexDirection: 'row' }}>
           <View>
-            <Image source={require('../../assets/icons/location.svg')} />
-            <CustomText style={styles.innerText}>{location}</CustomText>
-            <Image source={require('../../assets/icons/mail.svg')} />
-            <CustomText style={styles.innerText}>{email}</CustomText>
+            {data.location && data.location.length > 0 && (
+              <>
+                <Image source={require('../../assets/icons/location.svg')} />
+                <CustomText style={styles.innerText}>{data.location}</CustomText>
+              </>
+            )}
+            {data.email && data.email.length > 0 && (
+              <Pressable
+                onPress={() => {
+                  Linking.canOpenURL(data.email).then(() => {
+                    Linking.openURL('mailto:' + data.email);
+                  });
+                }}>
+                <Image source={require('../../assets/icons/mail.svg')} />
+                <CustomText style={styles.innerText}>{data.email}</CustomText>
+              </Pressable>
+            )}
           </View>
           <View style={{ flexDirection: 'row' }}>
-            {instagramLink && <IconInstagram style={{ marginRight: theme.spacing.$1Number }} />}
-            {facebookLink && <IconFacebook />}
+            {data.instagram_profile_url && data.instagram_profile_url.length > 0 && (
+              <Pressable
+                onPress={() => {
+                  Linking.canOpenURL(data.instagram_profile_url).then(() => {
+                    Linking.openURL(data.instagram_profile_url);
+                  });
+                }}>
+                <IconInstagram style={{ marginRight: theme.spacing.$1Number }} />
+              </Pressable>
+            )}
+            {data.facebook_profile_url && data.facebook_profile_url.length > 0 && (
+              <Pressable
+                onPress={() => {
+                  Linking.canOpenURL(data.facebook_profile_url).then(() => {
+                    Linking.openURL(data.facebook_profile_url);
+                  });
+                }}>
+                <IconFacebook />
+              </Pressable>
+            )}
           </View>
         </View>
         <View
@@ -72,7 +95,7 @@ export const Footer: React.FC<Props> = ({ location, email, copyright, facebookLi
           }}
         />
         <CustomText style={{ textAlign: 'center', marginTop: theme.spacing.$1Number, color: 'white' }}>
-          {copyright}
+          {data.copyright}
         </CustomText>
       </View>
     </ImageBackground>

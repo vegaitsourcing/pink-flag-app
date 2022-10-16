@@ -61,13 +61,7 @@ export const DonationScreen: React.FC = () => {
             </TouchableOpacity>
           </View>
         </View>
-        <Footer
-          copyright="© 2022 Pink Flag. All rights reserved."
-          email="zenskainicijativa@gmail.com"
-          location="Trg Slobode 3, Novi Sad"
-          instagramLink="https://instagram.com"
-          facebookLink="https://facebook.com"
-        />
+        <Footer />
       </ScrollView>
     </View>
   );

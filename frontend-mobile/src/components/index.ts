@@ -11,3 +11,4 @@ export { DonateBanner } from './DonateBanner';
 export { Footer } from './Footer';
 export { HomeNews } from './HomeNews';
 export { TitleDonation } from './donations/titleDonations';
+export { ActivityIndicatorContainer } from './ActivityIndicatorContainer';
