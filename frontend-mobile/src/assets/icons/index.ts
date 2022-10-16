@@ -21,3 +21,5 @@ export { default as PreviosFilledSvg } from './previous-icon-active.svg';
 export { default as NextFilledSvg } from './next_filled.svg';
 export { default as NextSvg } from './next-icon.svg';
 export { default as LogoSvg } from './logo.svg';
+export { default as CalendarRightArrow } from './calendar-right.svg';
+export { default as CalendarLeftArrow } from './calendar-left.svg';

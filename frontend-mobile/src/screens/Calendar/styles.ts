@@ -3,6 +3,7 @@ import { unit } from '@pf/utils';
 import { StyleSheet, ViewStyle } from 'react-native';
 import { Theme } from 'theme';
 
+const EXPLANATION_TOP = 40;
 const EXPLANATION_BOTTOM = 72;
 
 export const Container = styled.ScrollView`
@@ -14,13 +15,8 @@ export const Content = styled.View`
   padding-horizontal: ${({ theme }) => theme.spacing.$1};
 `;
 
-export const DummyCalendar = styled.View`
-  height: 340px;
-  margin-bottom: 40px;
-  background-color: red;
-`;
-
 export const ExplanationWrapper = styled.View`
+  margin-top: ${unit(EXPLANATION_TOP)};
   margin-bottom: ${unit(EXPLANATION_BOTTOM)};
 `;
 
