@@ -14,7 +14,7 @@ export const BlogModule: React.FC = () => {
 
   return isLoading ? (
     <ActivityIndicatorContainer />
-  ) : data ? (
+  ) : data && data.meta.total_count > 0 ? (
     <BlogCard style={styles.BlogCardStyle}>
       <View style={styles.cardContainer}>
         <Image
