@@ -18,4 +18,4 @@ export const blogApi = rootApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllBlogsQuery, useGetFeaturedBlogQuery } = blogApi;
+export const { useGetAllBlogsQuery, useGetFeaturedBlogQuery, useGetBlogByIdQuery } = blogApi;

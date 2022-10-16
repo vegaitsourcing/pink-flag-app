@@ -1,6 +1,6 @@
 export interface Body {
   type: string;
-  value: number | string;
+  value: string;
   id: string;
 }
 

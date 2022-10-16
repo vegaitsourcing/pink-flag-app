@@ -1,4 +1,5 @@
 import { Image, Parent } from '.';
+import { Body } from './Shared';
 
 export interface BlogDetailsModel {
   id: number;
