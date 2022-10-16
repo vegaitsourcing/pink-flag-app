@@ -15,12 +15,12 @@ export type RootNavigatorParams = {
 
 export type HomeNavigatorParams = {
   [HOME]: undefined;
-  [BLOG_DETAILS]: { id: string };
+  [BLOG_DETAILS]: { id: number };
 };
 
 export type BlogNavigatorParams = {
   [BLOG]: undefined;
-  [BLOG_DETAILS]: { id: string };
+  [BLOG_DETAILS]: { id: number };
 };
 
 export type CalendarNavigatorParams = {

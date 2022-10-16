@@ -3,13 +3,14 @@ import { BlogSmallCard } from './utils/styles';
 import { Image, View, StyleSheet } from 'react-native';
 import { CustomText } from '../CustomText';
 import { AppTheme } from '@pf/theme';
-import { BlogModel } from '@pf/models';
 
 export interface BlogSmallModuleProps {
-  blogModel: BlogModel;
+  date: Date;
+  title: string;
+  image: string;
 }
 
-export const BlogSmallModule: React.FC<BlogSmallModuleProps> = ({ blogModel: { date, title } }) => {
+export const BlogSmallModule: React.FC<BlogSmallModuleProps> = ({ date, title, image }) => {
   return (
     <BlogSmallCard style={styles.BlogSmallCardStyle}>
       <View style={styles.imageContainer}>
@@ -17,13 +18,13 @@ export const BlogSmallModule: React.FC<BlogSmallModuleProps> = ({ blogModel: { d
           style={styles.cardImage}
           resizeMode="cover"
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-          source={require('../../assets/images/blog-card-example.png')}></Image>
+          source={{ uri: image }}></Image>
       </View>
       <View style={styles.cardBody}>
         <View style={styles.titleTextContainer}>
           <CustomText style={styles.titleText}>{textOverflowHelper(title)}</CustomText>
         </View>
-        <CustomText style={styles.date}>{date}</CustomText>
+        <CustomText style={styles.date}>{date?.toDateString()}</CustomText>
       </View>
     </BlogSmallCard>
   );

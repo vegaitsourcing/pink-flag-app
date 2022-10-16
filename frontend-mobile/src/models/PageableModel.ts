@@ -1,5 +1,6 @@
 export interface PageableModel<T> {
   items: T[];
-  totalElements: number;
-  page: number;
+  meta: {
+    total_count: number;
+  };
 }

@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
-import { BlogModel } from '@pf/models';
 import { BlogSmallModule, Pagination } from '@pf/components';
 import { CustomText } from '../CustomText';
 import { useNavigation } from '@react-navigation/native';
@@ -8,11 +9,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { BlogNavigatorParams } from '@pf/constants';
 import { useGetAllBlogsQuery } from '@pf/services';
 import { useTheme } from '@emotion/react';
-
-export interface BlogListModel {
-  blogModelList: BlogModel[];
-  total: number;
-}
+import { BASE_URI } from '../../services/rootApi';
 
 export const BlogListModule: React.FC = () => {
   const theme = useTheme();
@@ -22,13 +19,13 @@ export const BlogListModule: React.FC = () => {
   const { data, isLoading } = useGetAllBlogsQuery({ page: activePage, size: 5, category: activeTag.toUpperCase() });
 
   const nextPage = (): void => {
-    if (data && activePage < data.totalElements / 5) {
+    if (data && activePage < data.meta.total_count / 5) {
       setActivePage(activePage + 1);
     }
   };
 
   const previousPage = (): void => {
-    if (data && activePage > data.totalElements / 5) {
+    if (data && activePage > data.meta.total_count / 5) {
       setActivePage(activePage - 1);
     }
   };
@@ -60,19 +57,23 @@ export const BlogListModule: React.FC = () => {
           {data &&
             data?.items.map((item, index) => (
               <Pressable key={index} onPress={() => navigate('blog_details', { id: item.id })}>
-                <BlogSmallModule blogModel={item} />
+                <BlogSmallModule
+                  date={item.meta.first_published_at}
+                  title={item.title ?? ''}
+                  image={BASE_URI + item.image.meta.download_url}
+                />
               </Pressable>
             ))}
 
           {data && (
             <Pagination
               activePage={activePage}
-              total={data?.totalElements! / 5 ?? 0}
+              total={data?.meta.total_count / 5 ?? 0}
               next={nextPage}
               previous={previousPage}></Pagination>
           )}
           {data === undefined && (
-            <CustomText style={{ textAlign: 'center', marginTop: 20, marginBottom: 20 }}>Nema rezultata</CustomText>
+            <CustomText style={{ textAlign: 'center', marginTop: 20, marginBottom: 20 }}>Nema rezultata.</CustomText>
           )}
         </>
       )}
