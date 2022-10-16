@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react';
 import { BlogCard } from './utils/styles';
-import { Image, View, StyleSheet, Pressable } from 'react-native';
+import { Image, View, StyleSheet, Pressable, Platform } from 'react-native';
 import { CustomText } from '../CustomText';
 import { AppTheme } from '@pf/theme';
 import { useGetFeaturedBlogQuery } from '@pf/services';
@@ -46,12 +46,21 @@ export const BlogModule: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  BlogCardStyle: {
-    shadowOffset: { width: 10, height: 10 },
-    shadowColor: 'black',
-    shadowOpacity: 1,
-    elevation: 3,
-  },
+  BlogCardStyle:
+    Platform.OS === 'ios'
+      ? {
+          backgroundColor: 'white',
+          shadowRadius: 4.65,
+          shadowOffset: {
+            width: 0,
+            height: 3,
+          },
+          shadowOpacity: 0.25,
+        }
+      : {
+          backgroundColor: 'white',
+          elevation: 6,
+        },
   cardImage: {
     width: '100%',
     height: 180,

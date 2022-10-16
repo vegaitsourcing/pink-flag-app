@@ -47,7 +47,7 @@ export const DonationScreen: React.FC = () => {
   return isLoading ? (
     <ActivityIndicatorContainer />
   ) : data ? (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <View style={pageViewStyles.pageContainer}>
         <Text style={textStyles.title}>{data.title}</Text>
         <View>

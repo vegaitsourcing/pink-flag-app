@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { BlogRoutes } from '@pf/constants';
 import { BlogScreenProps } from '../../navigation/BlogNavigator';
 import { useGetBlogByIdQuery } from '@pf/services';
-import { Image, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { ActivityIndicator, Image, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { AppTheme } from '@pf/theme';
 import { CustomText } from '../../components/CustomText';
 import { useTheme } from '@emotion/react';
@@ -14,12 +14,20 @@ import RenderHtml from 'react-native-render-html';
 const { BLOG_DETAILS } = BlogRoutes;
 
 export const BlogDetailsScreen: React.FC<BlogScreenProps<typeof BLOG_DETAILS>> = ({ route }) => {
-  const { data } = useGetBlogByIdQuery(route.params.id);
+  const { data, isLoading } = useGetBlogByIdQuery(route.params.id);
   const theme = useTheme();
   const { width } = useWindowDimensions();
 
+  if (isLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <ActivityIndicator size={'large'} color={theme.colors.primary} />
+      </View>
+    );
+  }
+
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       {data && (
         <View style={{ padding: theme.spacing.$1Number }}>
           <CustomText style={styles.label}>{data?.meta.type}</CustomText>

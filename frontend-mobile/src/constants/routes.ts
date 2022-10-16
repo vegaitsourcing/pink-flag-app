@@ -18,3 +18,7 @@ export const BlogRoutes = {
 export const CalendarRoutes = {
   CALENDAR: 'calendar',
 } as const;
+
+export const DonationRoutes = {
+  DONATIONS: 'donations',
+} as const;

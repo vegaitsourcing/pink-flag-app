@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 export const BlogScreen: React.FC = () => {
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <BlogModule />
       <BlogListModule></BlogListModule>
       <DonateBanner title="Doniraj" description="Podrzi akciju i DONIRAJ" buttonTitle="Doniraj" />
