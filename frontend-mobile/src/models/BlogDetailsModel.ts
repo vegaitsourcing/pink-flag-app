@@ -1,3 +1,5 @@
+import { Image, Parent } from '.';
+
 export interface BlogDetailsModel {
   id: number;
   meta: BlogDetailsModelMeta;
@@ -5,24 +7,6 @@ export interface BlogDetailsModel {
   body: Body[];
   category: string;
   image: Image;
-}
-
-export interface Body {
-  type: string;
-  value: number | string;
-  id: string;
-}
-
-export interface Image {
-  id: number;
-  meta: ImageMeta;
-  title: string;
-}
-
-export interface ImageMeta {
-  type: string;
-  detail_url: string;
-  download_url: string;
 }
 
 export interface BlogDetailsModelMeta {
@@ -33,18 +17,6 @@ export interface BlogDetailsModelMeta {
   show_in_menus: boolean;
   seo_title: string;
   search_description: string;
-  first_published_at: Date;
+  first_published_at: string;
   parent: Parent;
-}
-
-export interface Parent {
-  id: number;
-  meta: ParentMeta;
-  title: string;
-}
-
-export interface ParentMeta {
-  type: string;
-  detail_url: string;
-  html_url: string;
 }

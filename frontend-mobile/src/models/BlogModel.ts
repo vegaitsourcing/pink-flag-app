@@ -1,4 +1,4 @@
-import { Image } from './BlogDetailsModel';
+import { Image } from '.';
 
 export interface BlogModel {
   id: number;
