@@ -29,23 +29,15 @@ jobs:
           TAG_NUMBER: "${{ github.run_number }}"
           DB_USERNAME: ${{ secrets.DB_USERNAME }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      # - name: copy file via ssh password
-      #   uses: appleboy/scp-action@master
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USERNAME }}
-      #     password: ${{ secrets.PASSWORD }}
-      #     port: ${{ secrets.PORT }}
-      #     source: "./backend/docker-compose.pink-flag.yaml"
-      #     target: "./Projects/pink-flag-app/"
-      - name: Copy single file to remote
-        uses: garygrossgarten/github-action-scp@release
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@master
         with:
-          local: /backend/docker-compose.pink-flag.yaml
-          remote: /Projects/pink-flag-app/
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          source: "./backend/docker-compose.pink-flag.yaml"
+          target: "./Projects/pink-flag-app/"
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
