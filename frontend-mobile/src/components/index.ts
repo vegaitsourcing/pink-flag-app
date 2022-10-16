@@ -10,3 +10,7 @@ export { HomeCalendar } from './HomeCalendar';
 export { DonateBanner } from './DonateBanner';
 export { Footer } from './Footer';
 export { HomeNews } from './HomeNews';
+export { ReminderLabel } from './ReminderLabel';
+export { UserGreeting } from './UserGreeting';
+export { Reminders } from './Reminders';
+export { CalendarExplanation } from './CalendarExplanation';
