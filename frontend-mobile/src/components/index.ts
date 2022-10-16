@@ -14,5 +14,4 @@ export { ReminderLabel } from './ReminderLabel';
 export { UserGreeting } from './UserGreeting';
 export { Reminders } from './Reminders';
 export { CalendarExplanation } from './CalendarExplanation';
-export { TitleDonation } from './donations/titleDonations';
 export { ActivityIndicatorContainer } from './ActivityIndicatorContainer';

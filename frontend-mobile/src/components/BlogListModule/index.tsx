@@ -41,9 +41,9 @@ export const BlogListModule: React.FC = () => {
           </CustomText>
         </Pressable>
         <Pressable
-          style={{ ...styles.pressable, borderColor: activeTag == 'news' ? theme.colors.primary : 'white' }}
-          onPress={() => setActiveTag('news')}>
-          <CustomText style={{ ...styles.buttonText, fontWeight: activeTag == 'news' ? 'bold' : 'normal' }}>
+          style={{ ...styles.pressable, borderColor: activeTag == 'vesti' ? theme.colors.primary : 'white' }}
+          onPress={() => setActiveTag('vesti')}>
+          <CustomText style={{ ...styles.buttonText, fontWeight: activeTag == 'vesti' ? 'bold' : 'normal' }}>
             Vesti
           </CustomText>
         </Pressable>
