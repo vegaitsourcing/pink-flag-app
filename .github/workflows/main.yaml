@@ -41,7 +41,7 @@ jobs:
       - name: Copy single file to remote
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: /backedn/docker-compose.pink-flag.yaml
+          local: /backend/docker-compose.pink-flag.yaml
           remote: /Projects/pink-flag-app/
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
