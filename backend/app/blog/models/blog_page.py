@@ -6,7 +6,7 @@ from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.api import APIField
 from wagtail.signals import page_published
-from blog.signals import on_page_publish_receiver
+from blog.signals import on_page_publish_receiver, remove_featured_flag
 
 
 class BlogPage(Page):
@@ -29,7 +29,10 @@ class BlogPage(Page):
         ('image', ImageChooserBlock()),
     ], use_json_field=True)
 
+    featured = models.BooleanField(default=False)
+
     content_panels = Page.content_panels + [
+        FieldPanel('featured'),
         FieldPanel('category'),
         FieldPanel('image'),
         FieldPanel('body'),
@@ -41,9 +44,11 @@ class BlogPage(Page):
         APIField('body'),
         APIField('category'),
         APIField('image'),
+        APIField('featured'),
     ]
 
 
 
 
 page_published.connect(on_page_publish_receiver, sender=BlogPage)
+page_published.connect(remove_featured_flag, sender=BlogPage)
