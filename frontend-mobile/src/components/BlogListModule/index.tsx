@@ -1,52 +1,32 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-import React, { useState, useEffect } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
-import { AppTheme } from '@pf/theme';
-import { BlogModel } from '@pf/models';
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import React, { useState } from 'react';
+import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
 import { BlogSmallModule, Pagination } from '@pf/components';
 import { CustomText } from '../CustomText';
-
-const mockedBlogModel: BlogModel = {
-  title: 'Prva srednja škola koja je uvela besplatne higijenske uloške',
-  date: 'April 22. 2022.',
-  imageUrl: '../../assets/images/blog-card-example.png',
-  type: 'vest',
-};
-
-export interface BlogListModel {
-  blogModelList: BlogModel[];
-  total: number;
-}
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { BlogNavigatorParams } from '@pf/constants';
+import { useGetAllBlogsQuery } from '@pf/services';
+import { useTheme } from '@emotion/react';
+import { BASE_URI } from '../../services/rootApi';
 
 export const BlogListModule: React.FC = () => {
+  const theme = useTheme();
   const [activeTag, setActiveTag] = useState('blog');
   const [activePage, setActivePage] = useState(1);
-  const [contentList] = useState([mockedBlogModel, mockedBlogModel]);
-  const total = 10;
+  const { navigate } = useNavigation<StackNavigationProp<BlogNavigatorParams>>();
+  const { data, isLoading } = useGetAllBlogsQuery({ page: activePage, size: 5, category: activeTag.toUpperCase() });
 
-  const nextPage = () => {
-    if (activePage !== total) {
+  const nextPage = (): void => {
+    if (data && activePage < data.meta.total_count / 5) {
       setActivePage(activePage + 1);
-      loadContent();
     }
   };
 
-  const previousPage = () => {
-    if (activePage !== 1) {
+  const previousPage = (): void => {
+    if (data && activePage > data.meta.total_count / 5) {
       setActivePage(activePage - 1);
-      loadContent();
-    }
-  };
-
-  useEffect(() => {
-    loadContent();
-  }, [activeTag]);
-
-  const loadContent = (): void => {
-    if (activeTag == 'blog') {
-      console.log('fetch blogs');
-    } else {
-      console.log('fetch news');
     }
   };
 
@@ -54,26 +34,49 @@ export const BlogListModule: React.FC = () => {
     <>
       <View style={styles.blogListContainer}>
         <Pressable
-          style={{ ...styles.pressable, borderColor: activeTag == 'blog' ? AppTheme.colors.primary : 'white' }}
+          style={{ ...styles.pressable, borderColor: activeTag == 'blog' ? theme.colors.primary : 'white' }}
           onPress={() => setActiveTag('blog')}>
           <CustomText style={{ ...styles.buttonText, fontWeight: activeTag == 'blog' ? 'bold' : 'normal' }}>
             Blog
           </CustomText>
         </Pressable>
         <Pressable
-          style={{ ...styles.pressable, borderColor: activeTag == 'news' ? AppTheme.colors.primary : 'white' }}
+          style={{ ...styles.pressable, borderColor: activeTag == 'news' ? theme.colors.primary : 'white' }}
           onPress={() => setActiveTag('news')}>
           <CustomText style={{ ...styles.buttonText, fontWeight: activeTag == 'news' ? 'bold' : 'normal' }}>
             Vesti
           </CustomText>
         </Pressable>
       </View>
+      {isLoading ? (
+        <View>
+          <ActivityIndicator size="large" color={theme.colors.primary} />
+        </View>
+      ) : (
+        <>
+          {data &&
+            data?.items.map((item, index) => (
+              <Pressable key={index} onPress={() => navigate('blog_details', { id: item.id })}>
+                <BlogSmallModule
+                  date={item.meta.first_published_at}
+                  title={item.title ?? ''}
+                  image={BASE_URI + item.image.meta.download_url}
+                />
+              </Pressable>
+            ))}
 
-      {contentList.map((item, index) => (
-        <BlogSmallModule blogModel={item} key={`${item.title}_${index}`} />
-      ))}
-
-      <Pagination activePage={activePage} total={total} next={nextPage} previous={previousPage}></Pagination>
+          {data && (
+            <Pagination
+              activePage={activePage}
+              total={data?.meta.total_count / 5 ?? 0}
+              next={nextPage}
+              previous={previousPage}></Pagination>
+          )}
+          {data === undefined && (
+            <CustomText style={{ textAlign: 'center', marginTop: 20, marginBottom: 20 }}>Nema rezultata.</CustomText>
+          )}
+        </>
+      )}
     </>
   );
 };

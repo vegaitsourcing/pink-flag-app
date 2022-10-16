@@ -1,4 +1,5 @@
-import { AppTheme } from '@pf/theme';
+import { useTheme } from '@emotion/react';
+import { AppTheme, theme } from '@pf/theme';
 import React, { useState } from 'react';
 import { Modal, StyleSheet, Switch, View, Pressable } from 'react-native';
 import { ExitSvg } from '../../assets';
@@ -12,6 +13,7 @@ export interface SettingsProps {
 
 export const Settings: React.FC<SettingsProps> = ({ modalIsVisible, closeModal }: SettingsProps) => {
   const [notificationStatus, setNotificationStatus] = useState(false);
+  const theme = useTheme();
 
   return (
     <Modal visible={modalIsVisible}>
@@ -30,9 +32,9 @@ export const Settings: React.FC<SettingsProps> = ({ modalIsVisible, closeModal }
           <View style={styles.settingsItemContainer}>
             <CustomText style={styles.settingsItemText}>Notifikacija za novi post?</CustomText>
             <Switch
-              trackColor={{ false: AppTheme.colors.success, true: AppTheme.colors.success }}
-              thumbColor={AppTheme.colors.white}
-              ios_backgroundColor={AppTheme.colors.success}
+              trackColor={{ false: theme.colors.description, true: theme.colors.success }}
+              thumbColor={theme.colors.white}
+              ios_backgroundColor={notificationStatus ? theme.colors.success : theme.colors.description}
               onValueChange={() => {
                 setNotificationStatus(!notificationStatus);
               }}
@@ -44,9 +46,9 @@ export const Settings: React.FC<SettingsProps> = ({ modalIsVisible, closeModal }
         <View style={styles.actionContainer}>
           <UiButton
             title="Sačuvaj izmene"
-            color={AppTheme.colors.white}
-            backgroundColor={AppTheme.colors.primary}
-            fontSize={AppTheme.fontSize.$4Number}
+            color={theme.colors.white}
+            backgroundColor={theme.colors.primary}
+            fontSize={theme.fontSize.$4Number}
             fontWeight={'bold'}
             onPress={() => console.log('test')}></UiButton>
         </View>

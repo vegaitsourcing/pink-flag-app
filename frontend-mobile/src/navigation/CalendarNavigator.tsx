@@ -4,6 +4,7 @@ import { RouteProp } from '@react-navigation/native';
 import { CalendarRoutes, CalendarNavigatorParams } from '@pf/constants';
 import { CalendarScreen } from '@pf/screens';
 import { HeaderRight, HeaderTitle } from '@pf/components';
+import { header } from './styles';
 
 const Stack = createStackNavigator();
 type StackNavigatorProps = React.ComponentProps<typeof Stack.Navigator>;
@@ -25,6 +26,7 @@ const CalendarNavigator: React.FC = (props: Partial<StackNavigatorProps>) => {
         name={CALENDAR}
         component={CalendarScreen}
         options={{
+          headerStyle: header.layout,
           headerTitle: () => <HeaderTitle></HeaderTitle>,
           headerRight: () => <HeaderRight></HeaderRight>,
         }}

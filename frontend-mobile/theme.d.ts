@@ -21,16 +21,24 @@ interface ColorModel {
 interface Theme {
   colors: ColorModel;
   borderRadius: {
-    /** unit(24) */
+    /** unit(16) */
     $1: string;
-    /** 24 */
+    /** 16 */
     $1Number: number;
+    /** unit(24) */
+    $2: string;
+    /** 24 */
+    $2Number: number;
   };
   spacing: {
     /** unit(20) */
     $1: string;
     /** 20 */
     $1Number: number;
+    /** unit(24) */
+    $2: string;
+    /** 24 */
+    $2Number: number;
   };
   iconSize: {
     /** value unit(20) */
@@ -85,28 +93,32 @@ interface Theme {
     $3: string;
     /** unit(22) */
     $4: string;
-    /** unit(32) */
+    /** unit(25) */
     $5: string;
+    /** unit(30) */
+    $6: string;
+    /** unit(32) */
+    $7: string;
   };
   fontWeight: {
     /** 100 */
-    $100Number: number;
+    $100: string;
     /** 200 */
-    $200Number: number;
+    $200: string;
     /** 300 */
-    $300Number: number;
+    $300: string;
     /** 400 */
-    $400Number: number;
+    $400: string;
     /** 500 */
-    $500Number: number;
+    $500: string;
     /** 600 */
-    $600Number: number;
+    $600: string;
     /** 700 */
-    $700Number: number;
+    $700: string;
     /** 800 */
-    $800Number: number;
+    $800: string;
     /** 900 */
-    $900Number: number;
+    $900: string;
   };
 }
 

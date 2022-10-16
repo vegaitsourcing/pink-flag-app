@@ -90,7 +90,7 @@ export const Footer: React.FC = () => {
         </View>
         <View
           style={{
-            borderBottomColor: 'black',
+            borderBottomColor: 'white',
             borderBottomWidth: StyleSheet.hairlineWidth,
           }}
         />

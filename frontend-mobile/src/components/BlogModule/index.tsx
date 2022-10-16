@@ -1,27 +1,37 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react';
 import { BlogCard } from './utils/styles';
-import { Image, View, StyleSheet } from 'react-native';
+import { Image, View, StyleSheet, ActivityIndicator } from 'react-native';
 import { CustomText } from '../CustomText';
 import { AppTheme } from '@pf/theme';
-import { BlogModel } from '@pf/models';
+import { useGetFeaturedBlogQuery } from '@pf/services';
+import { useTheme } from '@emotion/react';
+import { BASE_URI } from '../../services/rootApi';
 
-export interface BlogModuleProps {
-  blogModel: BlogModel;
-}
+export const BlogModule: React.FC = () => {
+  const theme = useTheme();
+  const { data, isLoading } = useGetFeaturedBlogQuery();
 
-export const BlogModule: React.FC<BlogModuleProps> = ({ blogModel: { date, title, type } }) => {
-  return (
+  return isLoading ? (
+    <View>
+      <ActivityIndicator size="large" color={theme.colors.primary} />
+    </View>
+  ) : data ? (
     <BlogCard style={styles.BlogCardStyle}>
       <View style={styles.cardContainer}>
-        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-        <Image style={styles.cardImage} source={require('../../assets/images/blog-card-example.png')}></Image>
-        <View style={styles.cardBody}>
-          <CustomText style={styles.label}>{type}</CustomText>
-          <CustomText style={styles.date}>{date}</CustomText>
-          <CustomText style={styles.titleText}>{title}</CustomText>
-        </View>
+        <Image style={styles.cardImage} source={{ uri: BASE_URI + data[0].image.meta.download_url }}></Image>
+        {data && data.length && (
+          <View style={styles.cardBody}>
+            <CustomText style={styles.label}>{data[0].meta.type}</CustomText>
+            <CustomText style={styles.date}>{data[0].meta.first_published_at}</CustomText>
+            <CustomText style={styles.titleText}>{data[0].title}</CustomText>
+          </View>
+        )}
       </View>
     </BlogCard>
+  ) : (
+    <></>
   );
 };
 

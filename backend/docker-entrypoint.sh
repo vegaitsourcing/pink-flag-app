@@ -9,5 +9,4 @@ echo "Collecting static files"
 python manage.py collectstatic
 
 # Start server
-# gunicorn app.wsgi:application --bind 0.0.0.0:80
 python manage.py runserver 0.0.0.0:80

@@ -1,31 +1,48 @@
-import React, { useState } from 'react';
-import { ContainerView } from '../ContainerView';
-import { View, Text } from 'react-native';
+import React from 'react';
+import { View, Pressable, ActivityIndicator } from 'react-native';
 import { CustomText } from '../CustomText';
 import { BlogSmallModule } from '../BlogSmallModule';
-import { BlogModel } from '@pf/models';
 import { useTheme } from '@emotion/react';
-
-const mockedBlogModel: BlogModel = {
-  title: 'Prva srednja škola koja je uvela besplatne higijenske uloške',
-  date: 'April 22. 2022.',
-  imageUrl: '../../assets/images/blog-card-example.png',
-  type: 'vest',
-};
+import { useNavigation } from '@react-navigation/native';
+import { HomeNavigatorParams } from '@pf/constants';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { BASE_URI } from '../../services/rootApi';
+import { useGetAllBlogsQuery } from '@pf/services';
 
 export const HomeNews: React.FC = () => {
-  const [contentList] = useState<BlogModel[]>([mockedBlogModel, mockedBlogModel]);
+  const { navigate } = useNavigation<StackNavigationProp<HomeNavigatorParams>>();
   const theme = useTheme();
+
+  const { data, error, isLoading } = useGetAllBlogsQuery({ category: 'BLOG', page: 1, size: 5 });
+
+  console.log('IsLoading', isLoading);
+  console.log('data', data);
+  console.log('error', error);
+
   return (
     <View>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: theme.spacing.$1Number }}>
         <CustomText>Najnovije objave</CustomText>
         <CustomText>Pogledaj sve</CustomText>
       </View>
-      {contentList.map((el, index) => (
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        <BlogSmallModule key={index} blogModel={el} />
-      ))}
+      {isLoading ? (
+        <ActivityIndicator size="large" color={theme.colors.primary} />
+      ) : data && data.items.length ? (
+        data?.items.map((el, index) => (
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          <Pressable key={index} onPress={() => navigate('blog_details', { id: el.id })}>
+            <BlogSmallModule
+              title={el.title}
+              date={el.meta.first_published_at}
+              image={BASE_URI + el.image.meta.download_url}
+            />
+          </Pressable>
+        ))
+      ) : (
+        <>
+          <CustomText style={{ textAlign: 'center', margin: 20 }}>Nema objava.</CustomText>
+        </>
+      )}
     </View>
   );
 };

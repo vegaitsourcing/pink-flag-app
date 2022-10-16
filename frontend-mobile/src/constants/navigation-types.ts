@@ -2,7 +2,7 @@ import { BlogRoutes, CalendarRoutes, HomeRoutes, RootRoutes } from './routes';
 
 const { WELCOME_SCREEN_ENTER_LINK, HOME_STACK, BLOG_STACK, CALENDAR_STACK, DONATION } = RootRoutes;
 const { HOME } = HomeRoutes;
-const { BLOG } = BlogRoutes;
+const { BLOG, BLOG_DETAILS } = BlogRoutes;
 const { CALENDAR } = CalendarRoutes;
 
 export type RootNavigatorParams = {
@@ -15,10 +15,12 @@ export type RootNavigatorParams = {
 
 export type HomeNavigatorParams = {
   [HOME]: undefined;
+  [BLOG_DETAILS]: { id: number };
 };
 
 export type BlogNavigatorParams = {
   [BLOG]: undefined;
+  [BLOG_DETAILS]: { id: number };
 };
 
 export type CalendarNavigatorParams = {
