@@ -6,14 +6,12 @@ import { StyleSheet, View, ImageBackground } from 'react-native';
 import { CustomText } from '../CustomText';
 import { UiButton } from '../UiButton';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { useGetDonationsModuleQuery } from '@pf/services';
+import { DonationsModuleModel } from '@pf/models';
+import { ActivityIndicatorContainer } from '@pf/components';
 
-interface Props {
-  title: string;
-  description: string;
-  buttonTitle: string;
-}
-
-export const DonateBanner: React.FC<Props> = ({ title, description, buttonTitle }) => {
+export const DonateBanner: React.FC<Props> = () => {
+  const { data, isLoading, error } = useGetDonationsModuleQuery<DonationsModuleModel>();
   const theme = useTheme();
   const { navigate } = useNavigation<StackNavigationProp<RootNavigatorParams>>();
 
@@ -34,7 +32,9 @@ export const DonateBanner: React.FC<Props> = ({ title, description, buttonTitle 
     });
   }, [theme]);
 
-  return (
+  return isLoading ? (
+    <ActivityIndicatorContainer />
+  ) : data ? (
     <ImageBackground
       style={{
         margin: theme.spacing.$1Number,
@@ -43,11 +43,13 @@ export const DonateBanner: React.FC<Props> = ({ title, description, buttonTitle 
       imageStyle={{ borderRadius: theme.borderRadius.$1Number }}
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       source={require('../../assets/images/donation.png')}>
-      <CustomText style={styles.baseText}>{title}</CustomText>
-      <CustomText style={styles.innerText}>{description}</CustomText>
+      {data.title && data.title.length > 0 && <CustomText style={styles.baseText}>{data.title}</CustomText>}
+      {data.description && data.description.length > 0 && (
+        <CustomText style={styles.innerText}>{data.description}</CustomText>
+      )}
       <View style={{ marginRight: 242 }}>
         <UiButton
-          title={buttonTitle}
+          title={data.button_text}
           backgroundColor="white"
           fontWeight="400"
           fontSize={theme.fontSize.$3Number}
@@ -56,5 +58,5 @@ export const DonateBanner: React.FC<Props> = ({ title, description, buttonTitle 
         />
       </View>
     </ImageBackground>
-  );
+  ) : null;
 };
