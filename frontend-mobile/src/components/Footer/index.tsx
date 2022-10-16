@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useTheme } from '@emotion/react';
 import { FacebookWhiteSvg, InstagramWhiteSvg } from '@pf/assets';
-import React, { useMemo } from 'react';
+import { useGetFooterQuery } from '@pf/services';
+import React, { useEffect, useMemo } from 'react';
 import { StyleSheet, View, ImageBackground, Image } from 'react-native';
 import { CustomText } from '../CustomText';
 
@@ -14,9 +15,14 @@ interface Props {
 }
 
 export const Footer: React.FC<Props> = ({ location, email, copyright, facebookLink, instagramLink }) => {
+  const { data, error, isLoading } = useGetFooterQuery();
   const theme = useTheme();
   const IconInstagram = InstagramWhiteSvg;
   const IconFacebook = FacebookWhiteSvg;
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   const styles = useMemo(() => {
     return StyleSheet.create({
