@@ -1,7 +1,16 @@
+import { Image } from '.';
+
 export interface BlogModel {
-  id: string;
+  id: number;
+  meta: BlogModelMeta;
   title: string;
-  date: string;
+  image: Image;
+}
+
+export interface BlogModelMeta {
   type: string;
-  imageUrl: string;
+  detail_url: string;
+  html_url: string;
+  slug: string;
+  first_published_at: string;
 }

@@ -15,3 +15,4 @@ export { UserGreeting } from './UserGreeting';
 export { Reminders } from './Reminders';
 export { CalendarExplanation } from './CalendarExplanation';
 export { PinkFlagCalendar } from './PinkFlagCalendar';
+export { ActivityIndicatorContainer } from './ActivityIndicatorContainer';

@@ -1,28 +1,31 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react';
 import { BlogCard } from './utils/styles';
-import { Image, View, StyleSheet, ActivityIndicator } from 'react-native';
+import { Image, View, StyleSheet } from 'react-native';
 import { CustomText } from '../CustomText';
 import { AppTheme } from '@pf/theme';
 import { useGetFeaturedBlogQuery } from '@pf/services';
-import { useTheme } from '@emotion/react';
+import { BASE_URI } from '../../services/rootApi';
+import { ActivityIndicatorContainer } from '@pf/components';
 
 export const BlogModule: React.FC = () => {
-  const theme = useTheme();
   const { data, isLoading } = useGetFeaturedBlogQuery();
 
   return isLoading ? (
-    <View>
-      <ActivityIndicator size="large" color={theme.colors.primary} />
-    </View>
+    <ActivityIndicatorContainer />
   ) : data ? (
     <BlogCard style={styles.BlogCardStyle}>
       <View style={styles.cardContainer}>
-        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-        <Image style={styles.cardImage} source={require('../../assets/images/blog-card-example.png')}></Image>
+        <Image
+          style={styles.cardImage}
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          source={{ uri: BASE_URI + data.items[0].image.meta.download_url }}
+        />
         <View style={styles.cardBody}>
-          <CustomText style={styles.label}>{data.type}</CustomText>
-          <CustomText style={styles.date}>{data.date}</CustomText>
-          <CustomText style={styles.titleText}>{data.title}</CustomText>
+          <CustomText style={styles.label}>{data.items[0].meta.type}</CustomText>
+          <CustomText style={styles.date}>{new Date(data.items[0].meta.first_published_at).toDateString()}</CustomText>
+          <CustomText style={styles.titleText}>{data.items[0].title}</CustomText>
         </View>
       </View>
     </BlogCard>
@@ -40,6 +43,7 @@ const styles = StyleSheet.create({
   },
   cardImage: {
     width: '100%',
+    height: 180,
     borderRadius: 20,
   },
   cardContainer: {
