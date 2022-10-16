@@ -7,7 +7,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    'prettier/prettier': ['error', { jsxSingleQuote: true }],
+    'prettier/prettier': ['error'],
     '@typescript-eslint/explicit-function-return-type': [
       'warn',
       {

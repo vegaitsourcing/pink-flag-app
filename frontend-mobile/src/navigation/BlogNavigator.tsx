@@ -2,13 +2,13 @@ import React from 'react';
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 import { BlogRoutes, BlogNavigatorParams } from '@pf/constants';
-import { BlogScreen } from '@pf/screens';
+import { BlogDetailsScreen, BlogScreen } from '@pf/screens';
 import { HeaderRight, HeaderTitle } from '@pf/components';
 
 const Stack = createStackNavigator();
 type StackNavigatorProps = React.ComponentProps<typeof Stack.Navigator>;
 
-const { BLOG } = BlogRoutes;
+const { BLOG, BLOG_DETAILS } = BlogRoutes;
 
 export interface BlogScreenProps<Screen extends keyof BlogNavigatorParams> {
   navigation: StackNavigationProp<BlogNavigatorParams, Screen>;
@@ -24,6 +24,14 @@ const BlogNavigator: React.FC = (props: Partial<StackNavigatorProps>) => {
       <Stack.Screen
         name={BLOG}
         component={BlogScreen}
+        options={{
+          headerTitle: () => <HeaderTitle></HeaderTitle>,
+          headerRight: () => <HeaderRight></HeaderRight>,
+        }}
+      />
+      <Stack.Screen
+        name={BLOG_DETAILS}
+        component={BlogDetailsScreen}
         options={{
           headerTitle: () => <HeaderTitle></HeaderTitle>,
           headerRight: () => <HeaderRight></HeaderRight>,
