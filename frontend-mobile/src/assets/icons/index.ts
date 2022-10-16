@@ -20,3 +20,4 @@ export { default as PreviosSvg } from './previous.svg';
 export { default as PreviosFilledSvg } from './previous-icon-active.svg';
 export { default as NextFilledSvg } from './next_filled.svg';
 export { default as NextSvg } from './next-icon.svg';
+export { default as LogoSvg } from './logo.svg';
