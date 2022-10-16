@@ -12,6 +12,7 @@ export const HomeRoutes = {
 
 export const BlogRoutes = {
   BLOG: 'blog',
+  BLOG_DETAILS: 'blog_details',
 } as const;
 
 export const CalendarRoutes = {

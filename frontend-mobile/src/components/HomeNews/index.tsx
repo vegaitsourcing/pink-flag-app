@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { ContainerView } from '../ContainerView';
-import { View, Text } from 'react-native';
+import { View, Pressable } from 'react-native';
 import { CustomText } from '../CustomText';
 import { BlogSmallModule } from '../BlogSmallModule';
 import { BlogModel } from '@pf/models';
 import { useTheme } from '@emotion/react';
+import { useNavigation } from '@react-navigation/native';
+import { HomeNavigatorParams } from '@pf/constants';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 const mockedBlogModel: BlogModel = {
+  id: 'home-1',
   title: 'Prva srednja škola koja je uvela besplatne higijenske uloške',
   date: 'April 22. 2022.',
   imageUrl: '../../assets/images/blog-card-example.png',
@@ -14,7 +17,10 @@ const mockedBlogModel: BlogModel = {
 };
 
 export const HomeNews: React.FC = () => {
+  const { navigate } = useNavigation<StackNavigationProp<HomeNavigatorParams>>();
+
   const [contentList] = useState<BlogModel[]>([mockedBlogModel, mockedBlogModel]);
+
   const theme = useTheme();
   return (
     <View>
@@ -24,7 +30,9 @@ export const HomeNews: React.FC = () => {
       </View>
       {contentList.map((el, index) => (
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        <BlogSmallModule key={index} blogModel={el} />
+        <Pressable key={index} onPress={() => navigate('blog_details', { id: el.id })}>
+          <BlogSmallModule blogModel={el} />
+        </Pressable>
       ))}
     </View>
   );

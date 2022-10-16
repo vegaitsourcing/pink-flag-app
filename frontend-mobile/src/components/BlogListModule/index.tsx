@@ -1,18 +1,13 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { AppTheme } from '@pf/theme';
 import { BlogModel } from '@pf/models';
-import { StyledText } from '../CustomText/styles';
-import { BlogSmallModule } from '../BlogSmallModule';
-import { Pagination } from '../Pagination';
-
-const mockedBlogModel: BlogModel = {
-  title: 'Prva srednja škola koja je uvela besplatne higijenske uloške',
-  date: 'April 22. 2022.',
-  imageUrl: '../../assets/images/blog-card-example.png',
-  type: 'vest',
-};
+import { BlogSmallModule, Pagination } from '@pf/components';
+import { CustomText } from '../CustomText';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { BlogNavigatorParams } from '@pf/constants';
+import { useGetAllBlogsQuery } from '@pf/services';
 
 export interface BlogListModel {
   blogModelList: BlogModel[];
@@ -22,32 +17,18 @@ export interface BlogListModel {
 export const BlogListModule: React.FC = () => {
   const [activeTag, setActiveTag] = useState('blog');
   const [activePage, setActivePage] = useState(1);
-  const [contentList] = useState([mockedBlogModel, mockedBlogModel]);
-  const total = 10;
+  const { navigate } = useNavigation<StackNavigationProp<BlogNavigatorParams>>();
+  const { data } = useGetAllBlogsQuery({ page: activePage, size: 5 });
 
-  const nextPage = () => {
-    if (activePage !== total) {
+  const nextPage = (): void => {
+    if (data && activePage < data.totalElements / 5) {
       setActivePage(activePage + 1);
-      loadContent();
     }
   };
 
-  const previousPage = () => {
-    if (activePage !== 1) {
+  const previousPage = (): void => {
+    if (data && activePage > data.totalElements / 5) {
       setActivePage(activePage - 1);
-      loadContent();
-    }
-  };
-
-  useEffect(() => {
-    loadContent();
-  }, [activeTag]);
-
-  const loadContent = (): void => {
-    if (activeTag == 'blog') {
-      console.log('fetch blogs');
-    } else {
-      console.log('fetch news');
     }
   };
 
@@ -57,24 +38,36 @@ export const BlogListModule: React.FC = () => {
         <Pressable
           style={{ ...styles.pressable, borderColor: activeTag == 'blog' ? AppTheme.colors.primary : 'white' }}
           onPress={() => setActiveTag('blog')}>
-          <StyledText style={{ ...styles.buttonText, fontWeight: activeTag == 'blog' ? 'bold' : 'normal' }}>
+          <CustomText style={{ ...styles.buttonText, fontWeight: activeTag == 'blog' ? 'bold' : 'normal' }}>
             Blog
-          </StyledText>
+          </CustomText>
         </Pressable>
         <Pressable
           style={{ ...styles.pressable, borderColor: activeTag == 'news' ? AppTheme.colors.primary : 'white' }}
           onPress={() => setActiveTag('news')}>
-          <StyledText style={{ ...styles.buttonText, fontWeight: activeTag == 'news' ? 'bold' : 'normal' }}>
+          <CustomText style={{ ...styles.buttonText, fontWeight: activeTag == 'news' ? 'bold' : 'normal' }}>
             Vesti
-          </StyledText>
+          </CustomText>
         </Pressable>
       </View>
 
-      {contentList.map((item, index) => (
-        <BlogSmallModule blogModel={item} key={`${item.title}_${index}`} />
-      ))}
+      {data &&
+        data.items.map((item, index) => (
+          <Pressable key={index} onPress={() => navigate('blog_details', { id: item.id })}>
+            <BlogSmallModule blogModel={item} />
+          </Pressable>
+        ))}
 
-      <Pagination activePage={activePage} total={total} next={nextPage} previous={previousPage}></Pagination>
+      {data && (
+        <Pagination
+          activePage={activePage}
+          total={data?.totalElements / 5 ?? 0}
+          next={nextPage}
+          previous={previousPage}></Pagination>
+      )}
+      {data === undefined && (
+        <CustomText style={{ textAlign: 'center', marginTop: 20, marginBottom: 20 }}>No data found.</CustomText>
+      )}
     </>
   );
 };

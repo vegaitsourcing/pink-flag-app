@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { LogoSvg } from '@pf/assets';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';

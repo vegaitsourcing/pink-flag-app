@@ -1,6 +1,7 @@
-export class BlogModel {
-  title!: string;
-  date!: string;
-  type!: string;
-  imageUrl!: string;
+export interface BlogModel {
+  id: string;
+  title: string;
+  date: string;
+  type: string;
+  imageUrl: string;
 }
