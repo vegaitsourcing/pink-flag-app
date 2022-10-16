@@ -3,9 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { AppTheme } from '@pf/theme';
 import { BlogModel } from '@pf/models';
-import { StyledText } from '../CustomText/styles';
-import { BlogSmallModule } from '../BlogSmallModule';
-import { Pagination } from '../Pagination';
+import { BlogSmallModule, Pagination } from '@pf/components';
+import { CustomText } from '../CustomText';
 
 const mockedBlogModel: BlogModel = {
   title: 'Prva srednja škola koja je uvela besplatne higijenske uloške',
@@ -57,16 +56,16 @@ export const BlogListModule: React.FC = () => {
         <Pressable
           style={{ ...styles.pressable, borderColor: activeTag == 'blog' ? AppTheme.colors.primary : 'white' }}
           onPress={() => setActiveTag('blog')}>
-          <StyledText style={{ ...styles.buttonText, fontWeight: activeTag == 'blog' ? 'bold' : 'normal' }}>
+          <CustomText style={{ ...styles.buttonText, fontWeight: activeTag == 'blog' ? 'bold' : 'normal' }}>
             Blog
-          </StyledText>
+          </CustomText>
         </Pressable>
         <Pressable
           style={{ ...styles.pressable, borderColor: activeTag == 'news' ? AppTheme.colors.primary : 'white' }}
           onPress={() => setActiveTag('news')}>
-          <StyledText style={{ ...styles.buttonText, fontWeight: activeTag == 'news' ? 'bold' : 'normal' }}>
+          <CustomText style={{ ...styles.buttonText, fontWeight: activeTag == 'news' ? 'bold' : 'normal' }}>
             Vesti
-          </StyledText>
+          </CustomText>
         </Pressable>
       </View>
 

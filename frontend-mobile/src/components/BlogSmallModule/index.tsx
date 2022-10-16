@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React from 'react';
 import { BlogSmallCard } from './utils/styles';
 import { Image, View, StyleSheet } from 'react-native';
@@ -32,7 +31,7 @@ export const BlogSmallModule: React.FC<BlogSmallModuleProps> = ({ blogModel: { d
 
 const textOverflowHelper = (text: string): string => {
   if (text.length >= 92) {
-    return text.substring(0, 88) + '...';
+    return `${text.substring(0, 88)}...`;
   }
   return text;
 };

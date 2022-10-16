@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { SettingsSvg } from '@pf/assets';
 import React, { useState } from 'react';
 import { StyleSheet, View, Pressable } from 'react-native';
