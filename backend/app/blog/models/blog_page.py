@@ -1,11 +1,13 @@
 from django.db import models
-
 from wagtail.models import Page
 from wagtail.fields import StreamField
 from wagtail.admin.panels import FieldPanel
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.api import APIField
+from wagtail.signals import page_published
+from blog.signals import on_page_publish_receiver
+
 
 class BlogPage(Page):
 
@@ -40,3 +42,8 @@ class BlogPage(Page):
         APIField('category'),
         APIField('image'),
     ]
+
+
+
+
+page_published.connect(on_page_publish_receiver, sender=BlogPage)

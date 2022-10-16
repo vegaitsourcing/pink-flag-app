@@ -14,7 +14,7 @@ class DonationsModule(Page):
     button_text = models.CharField(max_length=30)
 
     content_panels = Page.content_panels + [
-        FieldPanel('title'),
+        FieldPanel('title_of_module'),
         FieldPanel('description'),
         FieldPanel('button_text'),
     ]
