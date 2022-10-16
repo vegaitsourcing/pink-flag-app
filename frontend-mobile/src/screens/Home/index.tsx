@@ -8,7 +8,7 @@ export const HomeScreen: React.FC = () => {
       <Intro heading="Pink Flag" subheading="Subheading text" buttonData={{ link: '/', title: 'Saznaj vise o nama' }} />
       <HomeCalendar title="Moj Kalendar" subtitle="Lorem ipsum dolor sit amet" />
       <HomeNews />
-      <DonateBanner title="Doniraj" description="Podrzi akciju i DONIRAJ" buttonTitle="Doniraj" />
+      <DonateBanner />
       <Footer />
     </ScrollView>
   );

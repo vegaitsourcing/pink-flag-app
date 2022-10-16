@@ -4,4 +4,4 @@ export { rootApi, BASE_URI } from './rootApi';
 export { useGetUserByIdQuery } from './usersApi';
 export { useGetAllBlogsQuery, useGetFeaturedBlogQuery, useGetBlogByIdQuery } from './blogApi';
 export { useGetFooterQuery } from './footerApi';
-export { useGetDonationsPageQuery } from './donationsApi';
+export * from './donationsApi';
