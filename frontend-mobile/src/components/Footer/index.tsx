@@ -61,7 +61,7 @@ export const Footer: React.FC<Props> = ({ location, email, copyright, facebookLi
         </View>
         <View
           style={{
-            borderBottomColor: 'black',
+            borderBottomColor: 'white',
             borderBottomWidth: StyleSheet.hairlineWidth,
           }}
         />

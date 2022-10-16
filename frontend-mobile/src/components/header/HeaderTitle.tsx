@@ -1,20 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { LogoSvg } from '@pf/assets';
 import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 export const HeaderTitle: React.FC = () => {
   return (
     <View style={styles.logoContainer}>
-      <Image style={{ height: 40 }} resizeMode="contain" source={require('../../assets/images/logo.png')}></Image>
+      <LogoSvg />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   logoContainer: {
+    flex: 1,
+    width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
   },
 });
