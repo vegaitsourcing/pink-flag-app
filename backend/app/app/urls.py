@@ -9,9 +9,9 @@ from wagtail.documents import urls as wagtaildocs_urls
 from blog.api import api_router
 
 api_urlpattern = [
-    path('v2/', api_router.urls),
     path('core/', include('core.urls')),
-    path('calendar/', include('pink_flag_calendar.urls'))
+    path('calendar/', include('pink_flag_calendar.urls')),
+    path('', api_router.urls),
 ]
 
 urlpatterns = [
