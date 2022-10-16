@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
 
   return isLoading ? (
     <ActivityIndicatorContainer />
-  ) : (
+  ) : data ? (
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     <ImageBackground style={styles.container} resizeMode="cover" source={require('../../assets/images/footer.png')}>
       <View style={styles.viewContainer}>
@@ -99,5 +99,5 @@ export const Footer: React.FC = () => {
         </CustomText>
       </View>
     </ImageBackground>
-  );
+  ) : null;
 };
