@@ -20,6 +20,7 @@ def on_page_publish_receiver(sender, **kwargs):
     first_published_at = instance.first_published_at.replace(microsecond=0)
     if latest_revision_created_at == first_published_at:
         send_notification(instance.category, instance.title)
+
 def remove_featured_flag(sender, **kwargs):
     instance = kwargs['instance']
     if instance.featured:
