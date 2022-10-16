@@ -1,6 +1,6 @@
 import React from 'react';
 import { BlogSmallCard } from './utils/styles';
-import { Image, View, StyleSheet } from 'react-native';
+import { Image, View, StyleSheet, Platform } from 'react-native';
 import { CustomText } from '../CustomText';
 import { AppTheme } from '@pf/theme';
 
@@ -39,13 +39,21 @@ const textOverflowHelper = (text: string): string => {
 };
 
 const styles = StyleSheet.create({
-  BlogSmallCardStyle: {
-    backgroundColor: 'white',
-    shadowOffset: { width: 10, height: 10 },
-    shadowColor: 'black',
-    shadowOpacity: 1,
-    elevation: 3,
-  },
+  BlogSmallCardStyle:
+    Platform.OS === 'ios'
+      ? {
+          backgroundColor: 'white',
+          shadowRadius: 4.65,
+          shadowOffset: {
+            width: 0,
+            height: 3,
+          },
+          shadowOpacity: 0.25,
+        }
+      : {
+          backgroundColor: 'white',
+          elevation: 6,
+        },
   imageContainer: {
     flex: 1,
   },

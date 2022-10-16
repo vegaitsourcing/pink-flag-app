@@ -1,12 +1,12 @@
 import React from 'react';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { Container } from './styles';
+import { Container, shadowStyles } from './styles';
 import { NavButton } from '../NavButton';
 import { getPathIcon, getPathName, PathName } from './utils';
 
 export const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
   return (
-    <Container>
+    <Container style={shadowStyles}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
 
