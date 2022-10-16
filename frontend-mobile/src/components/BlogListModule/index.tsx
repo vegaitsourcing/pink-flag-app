@@ -19,13 +19,13 @@ export const BlogListModule: React.FC = () => {
   const { data, isLoading } = useGetAllBlogsQuery({ page: activePage, size: 5, category: activeTag.toUpperCase() });
 
   const nextPage = (): void => {
-    if (data && activePage < data.meta.total_count / 5) {
+    if (data && activePage + 1 < Math.ceil(data.meta.total_count / 5)) {
       setActivePage(activePage + 1);
     }
   };
 
   const previousPage = (): void => {
-    if (data && activePage > data.meta.total_count / 5) {
+    if (data && activePage + 1 > 1) {
       setActivePage(activePage - 1);
     }
   };
@@ -60,14 +60,14 @@ export const BlogListModule: React.FC = () => {
                 <BlogSmallModule
                   date={item.meta.first_published_at}
                   title={item.title ?? ''}
-                  image={BASE_URI + item.image.meta.download_url}
+                  image={BASE_URI + item.image?.meta?.download_url}
                 />
               </Pressable>
             ))}
 
           {data && (
             <Pagination
-              activePage={activePage}
+              activePage={activePage + 1}
               total={Math.ceil(data?.meta.total_count / 5) ?? 0}
               next={nextPage}
               previous={previousPage}></Pagination>
