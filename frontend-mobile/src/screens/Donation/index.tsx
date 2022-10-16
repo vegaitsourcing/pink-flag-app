@@ -52,7 +52,7 @@ export const DonationScreen: React.FC = () => {
         <Text style={textStyles.title}>{data.title}</Text>
         <View>
           {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-          <Image style={pageViewStyles.donationImage} source={{ uri: BASE_URI + data.image.meta.download_url }} />
+          <Image style={pageViewStyles.donationImage} source={{ uri: BASE_URI + data.image?.meta?.download_url }} />
         </View>
         {data.body && data.body.length && <RenderHtml contentWidth={width} source={{ html: data.body }} />}
         {/* <View style={pageViewStyles.shareButtonContainer}>
