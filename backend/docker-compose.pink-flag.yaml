@@ -6,8 +6,6 @@ services:
     container_name: pink-flag-app
     ports:
       - "8000:80"
-    volumes:
-      - pinkflag:/data/pinkflag
     environment:
       DB_NAME: "db"
       DB_USER: "#{DB_USERNAME}#"
