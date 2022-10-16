@@ -14,7 +14,7 @@ import { BASE_URI } from '../../services/rootApi';
 export const BlogListModule: React.FC = () => {
   const theme = useTheme();
   const [activeTag, setActiveTag] = useState('blog');
-  const [activePage, setActivePage] = useState(1);
+  const [activePage, setActivePage] = useState(0);
   const { navigate } = useNavigation<StackNavigationProp<BlogNavigatorParams>>();
   const { data, isLoading } = useGetAllBlogsQuery({ page: activePage, size: 5, category: activeTag.toUpperCase() });
 
@@ -68,7 +68,7 @@ export const BlogListModule: React.FC = () => {
           {data && (
             <Pagination
               activePage={activePage}
-              total={data?.meta.total_count / 5 ?? 0}
+              total={Math.ceil(data?.meta.total_count / 5) ?? 0}
               next={nextPage}
               previous={previousPage}></Pagination>
           )}

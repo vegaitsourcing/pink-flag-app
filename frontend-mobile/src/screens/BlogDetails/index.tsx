@@ -17,13 +17,7 @@ export const BlogDetailsScreen: React.FC<BlogScreenProps<typeof BLOG_DETAILS>> =
   return (
     <ScrollView>
       <DonateBanner title="Doniraj" description="Podrzi akciju i DONIRAJ" buttonTitle="Doniraj" />
-      <Footer
-        copyright="© 2022 Pink Flag. All rights reserved."
-        email="zenskainicijativa@gmail.com"
-        location="Trg Slobode 3, Novi Sad"
-        instagramLink="https://instagram.com"
-        facebookLink="https://facebook.com"
-      />
+      <Footer />
     </ScrollView>
   );
 };

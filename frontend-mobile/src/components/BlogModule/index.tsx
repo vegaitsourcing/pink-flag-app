@@ -17,14 +17,16 @@ export const BlogModule: React.FC = () => {
   ) : data ? (
     <BlogCard style={styles.BlogCardStyle}>
       <View style={styles.cardContainer}>
-        <Image style={styles.cardImage} source={{ uri: BASE_URI + data[0].image.meta.download_url }}></Image>
-        {data && data.length && (
-          <View style={styles.cardBody}>
-            <CustomText style={styles.label}>{data[0].meta.type}</CustomText>
-            <CustomText style={styles.date}>{data[0].meta.first_published_at}</CustomText>
-            <CustomText style={styles.titleText}>{data[0].title}</CustomText>
-          </View>
-        )}
+        <Image
+          style={styles.cardImage}
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          source={{ uri: BASE_URI + data.items[0].image.meta.download_url }}
+        />
+        <View style={styles.cardBody}>
+          <CustomText style={styles.label}>{data.items[0].meta.type}</CustomText>
+          <CustomText style={styles.date}>{new Date(data.items[0].meta.first_published_at).toDateString()}</CustomText>
+          <CustomText style={styles.titleText}>{data.items[0].title}</CustomText>
+        </View>
       </View>
     </BlogCard>
   ) : (
@@ -41,6 +43,7 @@ const styles = StyleSheet.create({
   },
   cardImage: {
     width: '100%',
+    height: 180,
     borderRadius: 20,
   },
   cardContainer: {

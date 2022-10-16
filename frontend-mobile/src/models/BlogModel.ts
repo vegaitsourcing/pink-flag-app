@@ -12,5 +12,5 @@ export interface BlogModelMeta {
   detail_url: string;
   html_url: string;
   slug: string;
-  first_published_at: Date;
+  first_published_at: string;
 }

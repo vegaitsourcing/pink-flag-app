@@ -15,7 +15,7 @@ export const Pagination: React.FC<PaginationProps> = ({ activePage, total, next,
       <Pressable onPress={previous}>
         {activePage == 1 ? <PreviosSvg></PreviosSvg> : <PreviosFilledSvg></PreviosFilledSvg>}
       </Pressable>
-      <StyledText style={styles.activePageText}>{activePage}</StyledText>
+      <StyledText style={styles.activePageText}>{activePage + 1}</StyledText>
       <StyledText style={styles.totalPages}> / {total}</StyledText>
       <Pressable onPress={next}>
         {activePage == total ? <NextSvg></NextSvg> : <NextFilledSvg></NextFilledSvg>}

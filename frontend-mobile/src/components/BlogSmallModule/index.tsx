@@ -5,12 +5,13 @@ import { CustomText } from '../CustomText';
 import { AppTheme } from '@pf/theme';
 
 export interface BlogSmallModuleProps {
-  date: Date;
+  date: string;
   title: string;
   image: string;
 }
 
 export const BlogSmallModule: React.FC<BlogSmallModuleProps> = ({ date, title, image }) => {
+  console.log('Small: ' + image);
   return (
     <BlogSmallCard style={styles.BlogSmallCardStyle}>
       <View style={styles.imageContainer}>
@@ -24,7 +25,7 @@ export const BlogSmallModule: React.FC<BlogSmallModuleProps> = ({ date, title, i
         <View style={styles.titleTextContainer}>
           <CustomText style={styles.titleText}>{textOverflowHelper(title)}</CustomText>
         </View>
-        <CustomText style={styles.date}>{date?.toDateString()}</CustomText>
+        <CustomText style={styles.date}>{new Date(date).toDateString()}</CustomText>
       </View>
     </BlogSmallCard>
   );

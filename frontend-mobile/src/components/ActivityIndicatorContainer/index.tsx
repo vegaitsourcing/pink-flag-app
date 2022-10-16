@@ -1,4 +1,3 @@
-import { AppTheme } from '@pf/theme';
 import React from 'react';
 import { View, ViewProps, StyleSheet, ActivityIndicator } from 'react-native';
 import { useTheme } from '@emotion/react';

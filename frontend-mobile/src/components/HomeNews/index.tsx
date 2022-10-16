@@ -13,11 +13,7 @@ export const HomeNews: React.FC = () => {
   const { navigate } = useNavigation<StackNavigationProp<HomeNavigatorParams>>();
   const theme = useTheme();
 
-  const { data, error, isLoading } = useGetAllBlogsQuery({ category: 'BLOG', page: 1, size: 5 });
-
-  console.log('IsLoading', isLoading);
-  console.log('data', data);
-  console.log('error', error);
+  const { data, isLoading } = useGetAllBlogsQuery({ category: 'BLOG', page: 0, size: 5 });
 
   return (
     <View>
@@ -34,7 +30,7 @@ export const HomeNews: React.FC = () => {
             <BlogSmallModule
               title={el.title}
               date={el.meta.first_published_at}
-              image={BASE_URI + el.image.meta.download_url}
+              image={BASE_URI + el.image?.meta?.download_url ?? ''}
             />
           </Pressable>
         ))
