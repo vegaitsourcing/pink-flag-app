@@ -47,7 +47,7 @@ export const BlogDetailsScreen: React.FC<BlogScreenProps<typeof BLOG_DETAILS>> =
             console.log(width);
             return <RenderHtml baseStyle={{ color: 'black' }} contentWidth={width} source={{ html: bodyItem.value }} />;
           }
-          if (bodyItem.type == 'image' && bodyItem.value) {
+          if (bodyItem.type == 'image' && bodyItem.value && !Number(bodyItem.value)) {
             return (
               <Image
                 style={styles.cardImage}
