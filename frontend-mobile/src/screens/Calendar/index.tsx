@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import { CalendarExplanation, Footer, Reminders, UserGreeting } from '@pf/components';
-import { Container, Content, DummyCalendar, ExplanationWrapper, getStyles } from './styles';
+import { CalendarExplanation, Footer, PinkFlagCalendar, Reminders, UserGreeting } from '@pf/components';
+import { Container, Content, ExplanationWrapper, getStyles } from './styles';
 import GreetingData from '../../assets/data/greeting.json';
 import { useTheme } from '@emotion/react';
 
@@ -16,7 +16,7 @@ export const CalendarScreen: React.FC = () => {
       <Content>
         <UserGreeting name="Ana" description={GreetingData.description} />
         <Reminders />
-        <DummyCalendar />
+        <PinkFlagCalendar />
         <ExplanationWrapper>
           <CalendarExplanation />
         </ExplanationWrapper>

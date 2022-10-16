@@ -6,7 +6,7 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.api import APIField
 
 
-class CalendarModule(Page):
+class AboutUsModule(Page):
     max_count = 1
 
     description = models.TextField(max_length=200, blank=True, null=True)
