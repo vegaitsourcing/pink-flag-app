@@ -23,7 +23,7 @@ export const HomeCalendar: React.FC<Props> = ({ title, subtitle }) => {
         margin: theme.spacing.$1Number,
         padding: theme.spacing.$1Number,
       }}
-      imageStyle={{ borderRadius: theme.borderRadius.$1Number }}
+      imageStyle={{ borderRadius: theme.borderRadius.$2Number }}
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       source={require('../../assets/images/home-calendar.png')}>
       <StyledText style={styles.baseText}>{title}</StyledText>

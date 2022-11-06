@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontWeight: 'bold',
-    fontSize: AppTheme.fontSize.$7Number,
+    fontSize: AppTheme.fontSize.$8Number,
   },
   settingsItemsContainer: {
     flex: 6,

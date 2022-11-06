@@ -16,3 +16,6 @@ export { Reminders } from './Reminders';
 export { CalendarExplanation } from './CalendarExplanation';
 export { PinkFlagCalendar } from './PinkFlagCalendar';
 export { ActivityIndicatorContainer } from './ActivityIndicatorContainer';
+export { ModalHeader } from './ModalHeader';
+export { CustomText } from './CustomText';
+export { Line } from './Line';

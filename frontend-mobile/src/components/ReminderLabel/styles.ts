@@ -9,7 +9,7 @@ export const Container = styled.ImageBackground`
   overflow: hidden;
   height: ${unit(HEIGHT)};
   justify-content: center;
-  border-radius: ${({ theme }) => theme.borderRadius.$1};
+  border-radius: ${({ theme }) => theme.borderRadius.$2};
 `;
 
 export const StyledCustomText = styled(CustomText)<{ type: ReminderType }>`

@@ -3,7 +3,7 @@ import { BlogRoutes, CalendarRoutes, HomeRoutes, RootRoutes } from './routes';
 const { WELCOME_SCREEN_ENTER_LINK, HOME_STACK, BLOG_STACK, CALENDAR_STACK, DONATION } = RootRoutes;
 const { HOME } = HomeRoutes;
 const { BLOG, BLOG_DETAILS } = BlogRoutes;
-const { CALENDAR } = CalendarRoutes;
+const { CALENDAR, CALENDAR_ONBOARDING } = CalendarRoutes;
 
 export type RootNavigatorParams = {
   [WELCOME_SCREEN_ENTER_LINK]: undefined;
@@ -25,4 +25,5 @@ export type BlogNavigatorParams = {
 
 export type CalendarNavigatorParams = {
   [CALENDAR]: undefined;
+  [CALENDAR_ONBOARDING]: undefined;
 };

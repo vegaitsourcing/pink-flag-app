@@ -14,7 +14,7 @@ export const Greeting = styled(CustomText)`
   margin-bottom: ${unit(GREETING_BOTTOM)};
   color: ${({ theme }) => theme.colors.primary};
   font-size: ${({ theme }) => theme.fontSize.$7};
-  line-height: ${({ theme }) => theme.lineHeight.$6};
+  line-height: ${({ theme }) => theme.lineHeight.$7};
   font-weight: ${({ theme }) => theme.fontWeight.$700};
 `;
 

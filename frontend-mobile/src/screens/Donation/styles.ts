@@ -10,7 +10,7 @@ export const getTextStyles = (
     title: {
       fontWeight: '700',
       color: theme.colors.primary,
-      fontSize: theme.fontSize.$7Number,
+      fontSize: theme.fontSize.$8Number,
     },
     shareButtonText: {
       textDecorationLine: 'underline',
