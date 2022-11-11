@@ -25,3 +25,4 @@ export { default as CalendarRightArrow } from './calendar-right.svg';
 export { default as CalendarLeftArrow } from './calendar-left.svg';
 export { default as CloseSvg } from './close.svg';
 export { default as GoogleSvg } from './google.svg';
+export { default as CalendarOnboardingSvg } from './calendar-onboarding.svg';

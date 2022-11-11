@@ -1,7 +1,7 @@
 import React from 'react';
 import { ModalHeader as Header } from '@pf/components';
 import { Container, StyledPagerView } from './styles';
-import { LoginScreen } from './screens';
+import { LoginScreen, OnboardingScreen } from './screens';
 
 export const CalendarOnboardingScreen: React.FC = () => {
   return (
@@ -9,6 +9,7 @@ export const CalendarOnboardingScreen: React.FC = () => {
       <Header />
       <StyledPagerView>
         <LoginScreen />
+        <OnboardingScreen />
       </StyledPagerView>
     </Container>
   );

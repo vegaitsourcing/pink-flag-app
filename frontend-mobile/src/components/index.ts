@@ -19,3 +19,4 @@ export { ActivityIndicatorContainer } from './ActivityIndicatorContainer';
 export { ModalHeader } from './ModalHeader';
 export { CustomText } from './CustomText';
 export { Line } from './Line';
+export { CustomInput } from './CustomInput';
