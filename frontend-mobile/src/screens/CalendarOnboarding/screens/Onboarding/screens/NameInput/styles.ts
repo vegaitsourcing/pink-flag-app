@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
 import { CustomText } from '@pf/components';
 
-export const Container = styled.View`
+export const Container = styled.Pressable`
   flex: 1;
   align-items: center;
 `;

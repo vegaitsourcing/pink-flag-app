@@ -1,3 +1,4 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { BlogRoutes, CalendarRoutes, HomeRoutes, RootRoutes } from './routes';
 
 const { WELCOME_SCREEN_ENTER_LINK, HOME_STACK, BLOG_STACK, CALENDAR_STACK, DONATION } = RootRoutes;
@@ -27,3 +28,7 @@ export type CalendarNavigatorParams = {
   [CALENDAR]: undefined;
   [CALENDAR_ONBOARDING]: undefined;
 };
+export type CalendarNavigatorScreenProps<Screen extends keyof CalendarNavigatorParams> = NativeStackScreenProps<
+  CalendarNavigatorParams,
+  Screen
+>;

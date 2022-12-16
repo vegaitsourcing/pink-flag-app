@@ -1,7 +1,6 @@
 import styled from '@emotion/native';
-import { CustomText } from '@pf/components';
+import { CustomText, PrimaryButton } from '@pf/components';
 import { unit } from '@pf/utils';
-import { Button } from '../../components';
 
 const TITLE_BOTTOM = 48;
 const FONT_SIZE = 14;
@@ -14,7 +13,7 @@ export const Container = styled.View`
   padding-horizontal: ${({ theme }) => theme.spacing.$1};
 `;
 
-export const StyledButton = styled(Button)`
+export const StyledButton = styled(PrimaryButton)`
   margin-bottom: ${unit(BUTTON_BOTTOM)};
   margin-top: ${({ theme }) => theme.spacing.$2};
 `;

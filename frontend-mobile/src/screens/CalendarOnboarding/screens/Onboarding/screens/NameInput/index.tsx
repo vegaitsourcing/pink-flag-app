@@ -1,12 +1,26 @@
-import { CustomInput } from '@pf/components';
-import React from 'react';
+import { CustomInput, WithSafeView } from '@pf/components';
+import { dismissKeyboard } from '@pf/utils';
+import React, { useCallback } from 'react';
+import { SvgBackground } from '../../components';
 import { Container, StyledTitle } from './styles';
 
-export const NameInputScreen: React.FC = () => {
+interface Props {
+  onInputChange: (isValid: boolean) => void;
+}
+
+export const NameInputScreen: React.FC<Props> = WithSafeView(({ onInputChange }) => {
+  const handleOnChangeText = useCallback(
+    (text: string) => {
+      onInputChange(text.length > 0);
+    },
+    [onInputChange],
+  );
+
   return (
-    <Container>
+    <Container onPress={dismissKeyboard}>
+      <SvgBackground />
       <StyledTitle content="Kako se zoveš?" />
-      <CustomInput placeholder="Tvoje ime" />
+      <CustomInput placeholder="Tvoje ime" onChangeText={handleOnChangeText} />
     </Container>
   );
-};
+});

@@ -1,30 +1,20 @@
 import styled from '@emotion/native';
-import { CustomText } from '@pf/components';
+import { CustomText, PrimaryButton } from '@pf/components';
 import { unit } from '@pf/utils';
-import { Button } from '../../components';
 import PagerView from 'react-native-pager-view';
 
-const CONTAINER_BOTTOM = 37;
-const ICON_BOTTOM = 40;
+const CONTAINER_BOTTOM = 29;
 const TITLE_BOTTOM = 48;
-const BUTTON_BOTTOM = 54;
 const TEXT_TOP = 16;
+const INDICATOR_CONTAINER_WIDTH = 56;
+const INDICATOR_CONTAINER_HEIGHT = 8;
+const INDICATOR_CONTAINER_TOP = 10;
+const BUTTON_BOTTOM = 54;
 
 export const Container = styled.View`
   flex: 1;
   padding-top: ${unit(CONTAINER_BOTTOM)};
   padding-horizontal: ${({ theme }) => theme.spacing.$1};
-`;
-
-export const IconWrapper = styled.View`
-  align-items: center;
-  margin-bottom: ${unit(ICON_BOTTOM)};
-`;
-
-export const StyledButton = styled(Button)`
-  position: absolute;
-  bottom: ${unit(BUTTON_BOTTOM)};
-  left: ${({ theme }) => theme.spacing.$1};
 `;
 
 export const StyledTitle = styled(CustomText)`
@@ -52,4 +42,22 @@ export const BulletText = styled(CustomText)`
 
 export const StyledPagerView = styled(PagerView)`
   flex: 1;
+`;
+
+export const IndicatorContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: ${unit(INDICATOR_CONTAINER_WIDTH)};
+  height: ${unit(INDICATOR_CONTAINER_HEIGHT)};
+  margin-top: ${unit(INDICATOR_CONTAINER_TOP)};
+`;
+
+export const StyledPrimaryButton = styled(PrimaryButton)`
+  margin-top: ${({ theme }) => theme.spacing.$1};
+`;
+
+export const Footer = styled.View`
+  align-items: center;
+  margin-bottom: ${unit(BUTTON_BOTTOM)};
 `;

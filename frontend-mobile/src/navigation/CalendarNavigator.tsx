@@ -1,25 +1,19 @@
 import React from 'react';
-import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RouteProp } from '@react-navigation/native';
-import { CalendarRoutes, CalendarNavigatorParams } from '@pf/constants';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { CalendarNavigatorParams, CalendarRoutes } from '@pf/constants';
 import { CalendarOnboardingScreen, CalendarScreen } from '@pf/screens';
 import { HeaderRight, HeaderTitle } from '@pf/components';
 // import { header } from './styles';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<CalendarNavigatorParams>();
 type StackNavigatorProps = React.ComponentProps<typeof Stack.Navigator>;
 
 const { CALENDAR, CALENDAR_ONBOARDING } = CalendarRoutes;
 
-export interface CalendarScreenProps<Screen extends keyof CalendarNavigatorParams> {
-  navigation: NativeStackNavigationProp<CalendarNavigatorParams, Screen>;
-  route: RouteProp<CalendarNavigatorParams, Screen>;
-}
-
 const CalendarNavigator: React.FC = (props: Partial<StackNavigatorProps>) => {
   return (
     <Stack.Navigator
-      initialRouteName={CALENDAR_ONBOARDING}
+      initialRouteName={CALENDAR}
       screenOptions={{ headerShown: true, headerTitleAlign: 'center' }}
       {...props}>
       <Stack.Screen
