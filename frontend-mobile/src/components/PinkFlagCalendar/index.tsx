@@ -1,13 +1,15 @@
 import React from 'react';
-import { Calendar } from 'react-native-calendars';
+import { Calendar, CalendarProps } from 'react-native-calendars';
 import { Arrow, Header } from './components';
 import { ConfigureCalendar } from './config';
-import { styles } from './styles';
+import { MarkerStyles } from './types';
 
 ConfigureCalendar();
 const today = new Date().toString();
 
-export const PinkFlagCalendar: React.FC = () => {
+type Props = CalendarProps;
+
+export const PinkFlagCalendar: React.FC<Props> = ({ ...props }) => {
   return (
     // <Header />
     <Calendar
@@ -61,32 +63,18 @@ export const PinkFlagCalendar: React.FC = () => {
       // Enable the option to swipe between months. Default = false
       enableSwipeMonths={true}
       markingType="custom"
-      markedDates={{
-        '2022-10-14': {
-          customStyles: {
-            container: styles.menstruationMarker,
-            text: styles.whiteTextMarker,
-          },
-        },
-        '2022-10-13': {
-          customStyles: {
-            container: styles.fertilityMarker,
-            text: styles.whiteTextMarker,
-          },
-        },
-        '2022-10-12': {
-          customStyles: {
-            container: styles.expectedMenstruationMarker,
-            text: styles.blackTextMarker,
-          },
-        },
-        '2022-10-11': {
-          customStyles: {
-            container: styles.ovulationMarker,
-            text: styles.blackTextMarker,
-          },
-        },
-      }}
+      {...props}
     />
   );
 };
+
+export { MarkerStyles };
+
+//   },
+//   '2022-10-11': {
+//     customStyles: {
+//       container: styles.ovulationMarker,
+//       text: styles.blackTextMarker,
+//     },
+//   },
+// }}

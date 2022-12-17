@@ -21,8 +21,6 @@
 		40E2FB105B854B7E9F5113F5 /* Nunito-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7877A160ED054A1FAF7FA02F /* Nunito-Italic.ttf */; };
 		44C88D23F00F4FD7BFA1FB99 /* Nunito-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 595E2C7E8AFF426BA8EE458C /* Nunito-ExtraLight.ttf */; };
 		4AAF9B85191643F38010CFD1 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6663C4D3587B4269A590F6E4 /* Nunito-SemiBold.ttf */; };
-		4B85E55E291EC8C100C75D86 /* hermes.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BB79C1728F981CC00450E33 /* hermes.xcframework */; };
-		4B85E55F291EC8C100C75D86 /* hermes.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BB79C1728F981CC00450E33 /* hermes.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		503E9B61B06E4F38809EFA91 /* Nunito-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D625115D1E6A465E8FCD934D /* Nunito-MediumItalic.ttf */; };
 		5D7F0F81A88B4930B1C925E6 /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2D0FDF0705D421DBEA357F8 /* Nunito-BlackItalic.ttf */; };
 		5EF64A1DBE5C48D79A4FE36E /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CF46B9F2D4544E99876A559 /* Nunito-Bold.ttf */; };
@@ -43,20 +41,6 @@
 			remoteInfo = PinkFlagApp;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		4B85E560291EC8C100C75D86 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				4B85E55F291EC8C100C75D86 /* hermes.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* PinkFlagAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinkFlagAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,7 +93,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C80B921A6F3F58F76C31292 /* libPods-PinkFlagApp.a in Frameworks */,
-				4B85E55E291EC8C100C75D86 /* hermes.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +242,6 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
-				4B85E560291EC8C100C75D86 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

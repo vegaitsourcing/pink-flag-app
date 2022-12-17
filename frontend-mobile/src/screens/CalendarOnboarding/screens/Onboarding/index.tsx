@@ -49,7 +49,7 @@ export const OnboardingScreen: React.FC = () => {
         <NameInputScreen onInputChange={onInputChange} />
         <BirthdayInputScreen onInputChange={onInputChange} />
         <PeriodInputScreen onInputChange={onInputChange} currentPageIndex={currentPage} />
-        <CalendarInputScreen />
+        <CalendarInputScreen onInputChange={onInputChange} />
       </StyledPagerView>
       <Footer>
         {notFirstPage && (

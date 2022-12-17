@@ -1,6 +1,6 @@
 import { CustomInput, PickerOption } from '@pf/components';
 import { useCustomPicker } from '@pf/hooks';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { ScrollView } from 'react-native';
 import { SvgBackground } from '../../components';
 import { Container, StyledTitle, StyledDescription, styles, Separator, ButtonWrapper } from './styles';
@@ -27,42 +27,53 @@ interface Props {
   currentPageIndex: number;
 }
 
-// if (cycleLength && menstruationLength) {
-//   const isValid = true;
-//   onInputChange(isValid);
-//   return;
-// }
-
-// const isValid = false;
-// onInputChange(isValid);
-
 export const PeriodInputScreen: React.FC<Props> = ({ onInputChange, currentPageIndex }) => {
-  const [menstruationLength, setMenstruationLength] = useState('');
-  const [cycleLength, setCycleLength] = useState('');
+  const cycleLength = useRef('');
+  const menstruationLength = useRef('');
   const scrollViewRef = useRef<ScrollView>(null);
 
   useEffect(() => {
     if (currentPageIndex === 3) {
-      console.log('Scrolling');
       setTimeout(() => scrollViewRef.current?.scrollToEnd(), 500);
     }
   }, [currentPageIndex]);
 
-  const onPeriodLengthSubmit = useCallback((selectedValue: PickerOption<number>): void => {
-    setMenstruationLength(selectedValue.label);
-  }, []);
+  const handleSelection = useCallback(() => {
+    if (cycleLength.current && menstruationLength.current) {
+      const isValid = true;
+      onInputChange(isValid);
+      return;
+    }
+
+    const isValid = false;
+    onInputChange(isValid);
+  }, [onInputChange]);
+
+  const onPeriodLengthSubmit = useCallback(
+    (selectedValue: PickerOption<number>): void => {
+      menstruationLength.current = selectedValue.label;
+      handleSelection();
+    },
+    [handleSelection],
+  );
 
   const onPeriodLengthReject = useCallback((): void => {
-    setMenstruationLength(EMPTY_VALUE);
-  }, []);
+    menstruationLength.current = EMPTY_VALUE;
+    handleSelection();
+  }, [handleSelection]);
 
-  const onCycleLengthSubmit = useCallback((selectedValue: PickerOption<number>): void => {
-    setCycleLength(selectedValue.label);
-  }, []);
+  const onCycleLengthSubmit = useCallback(
+    (selectedValue: PickerOption<number>): void => {
+      cycleLength.current = selectedValue.label;
+      handleSelection();
+    },
+    [handleSelection],
+  );
 
   const onCycleLengthReject = useCallback((): void => {
-    setCycleLength(EMPTY_VALUE);
-  }, []);
+    cycleLength.current = EMPTY_VALUE;
+    handleSelection();
+  }, [handleSelection]);
 
   const { CustomPickerComponent: PeriodPicker, togglePickerModal: togglePeriodPicker } = useCustomPicker({
     options: periodOptions,
@@ -86,12 +97,12 @@ export const PeriodInputScreen: React.FC<Props> = ({ onInputChange, currentPageI
       <StyledDescription content="Kako bi kalendar bio što precizniji neophodno je da uneseš sledeće podatke:" />
       <StyledTitle content="Dužina menstruacije" />
       <ButtonWrapper onPress={togglePeriodPicker}>
-        <CustomInput placeholder="U danima" value={menstruationLength} pointerEvents="none" editable={false} />
+        <CustomInput placeholder="U danima" value={menstruationLength.current} pointerEvents="none" editable={false} />
       </ButtonWrapper>
       <Separator />
       <StyledTitle content="Dužina ciklusa" />
       <ButtonWrapper onPress={toggleCyclePicker}>
-        <CustomInput placeholder="U danima" value={cycleLength} pointerEvents="none" editable={false} />
+        <CustomInput placeholder="U danima" value={cycleLength.current} pointerEvents="none" editable={false} />
       </ButtonWrapper>
       {PeriodPicker}
       {CyclePicker}

@@ -8,7 +8,7 @@
     "android": "npm-run-all -s clean:android run:android-build-dev start",
     "ios": "react-native run-ios",
     "start": "rimraf ./node_modules/.cache/babel-loader && react-native start --reset-cache",
-    "build": "yarn; cd ios; pod install; cd ..",
+    "build": "yarn; cd ios; bundle install; bundle exec pod install; cd ..",
     "test": "jest",
     "dependency:check": "madge --circular --extensions ts,js,tsx ./",
     "type:check": "tsc",
