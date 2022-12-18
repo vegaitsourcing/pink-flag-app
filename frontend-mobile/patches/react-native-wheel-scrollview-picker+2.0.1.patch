@@ -1,0 +1,44 @@
+diff --git a/node_modules/react-native-wheel-scrollview-picker/index.tsx b/node_modules/react-native-wheel-scrollview-picker/index.tsx
+index 61ee5c5..af49f52 100644
+--- a/node_modules/react-native-wheel-scrollview-picker/index.tsx
++++ b/node_modules/react-native-wheel-scrollview-picker/index.tsx
+@@ -45,6 +45,7 @@ export type ScrollPickerProps = {
+     isSelected: boolean
+   ) => JSX.Element;
+   highlightColor?: string;
++  highlightWidth?: number;
+   highlightBorderWidth?: number;
+   itemHeight?: number;
+   wrapperHeight?: number;
+@@ -59,6 +60,7 @@ export default function ScrollPicker({
+   itemHeight = 30,
+   style,
+   scrollViewComponent,
++  highlightWidth,
+   ...props
+ }: ScrollPickerProps): JSX.Element {
+   const [initialized, setInitialized] = useState(false);
+@@ -194,7 +196,7 @@ export default function ScrollPicker({
+   };
+ 
+   const { header, footer } = renderPlaceHolder();
+-  const highlightWidth = (isViewStyle(style) ? style.width : 0) || deviceWidth;
++  const customHighlightWidth = highlightWidth || (isViewStyle(style) ? style.width : 0) || deviceWidth;
+   const highlightColor = props.highlightColor || "#333";
+   const highlightBorderWidth =
+     props.highlightBorderWidth || StyleSheet.hairlineWidth;
+@@ -210,11 +212,12 @@ export default function ScrollPicker({
+     position: "absolute",
+     top: (wrapperHeight - itemHeight) / 2,
+     height: itemHeight,
+-    width: highlightWidth,
++    width: customHighlightWidth,
+     borderTopColor: highlightColor,
+     borderBottomColor: highlightColor,
+-    borderTopWidth: highlightBorderWidth,
++    borderTopWidth: highlightBorderWidth * 0.5,
+     borderBottomWidth: highlightBorderWidth,
++    alignSelf: 'center',
+   };
+ 
+   const CustomScrollViewComponent = scrollViewComponent || ScrollView;

@@ -16,7 +16,6 @@ interface Props {
 
 export const CalendarInputScreen: React.FC<Props> = ({ onInputChange }) => {
   const markedDates = useRef<{ [key: string]: ValueOf<typeof CalendarMarkerStyles> }>({});
-  // const [markedDates, setMarkedDates] = useState<{ [key: string]: ValueOf<typeof CalendarMarkerStyles> }>({});
 
   const checkCalendarValidity = useCallback(() => {
     if (isEmptyObject(markedDates.current)) {

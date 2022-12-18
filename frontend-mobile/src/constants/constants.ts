@@ -7,3 +7,4 @@ export const WIDTH = width;
 export const HEIGHT = height;
 
 export const CALENDAR_SETUP_KEY = 'CALENDAR_SETUP';
+export const EMPTY_STRING = '';

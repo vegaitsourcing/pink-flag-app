@@ -1,26 +1,11 @@
 import { CustomInput, PickerOption } from '@pf/components';
+import { EMPTY_STRING } from '@pf/constants';
 import { useCustomPicker } from '@pf/hooks';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { ScrollView } from 'react-native';
 import { SvgBackground } from '../../components';
+import { cycleOptions, CYCLE_DEFAULT, periodOptions, PERIOD_DEFAULT, SCROLL_TIMEOUT, THIS_PAGE } from './constants';
 import { Container, StyledTitle, StyledDescription, styles, Separator, ButtonWrapper } from './styles';
-
-const EMPTY_VALUE = '';
-const PERIOD_MAX = 7;
-const PERIOD_DEFAULT = 4;
-const PERIOD_OFFSET = 1;
-const periodOptions = Array.from({ length: PERIOD_MAX }).map((_, index) => ({
-  label: `${index + PERIOD_OFFSET}`,
-  value: index + PERIOD_OFFSET,
-})) as PickerOption<number>[];
-
-const CYCLE_MAX = 21;
-const CYCLE_DEFAULT = 8;
-const CYCLE_OFFSET = 20;
-const cycleOptions = Array.from({ length: CYCLE_MAX }).map((_, index) => ({
-  label: `${index + CYCLE_OFFSET}`,
-  value: index + CYCLE_OFFSET,
-})) as PickerOption<number>[];
 
 interface Props {
   onInputChange: (isValid: boolean) => void;
@@ -28,13 +13,13 @@ interface Props {
 }
 
 export const PeriodInputScreen: React.FC<Props> = ({ onInputChange, currentPageIndex }) => {
-  const cycleLength = useRef('');
-  const menstruationLength = useRef('');
+  const cycleLength = useRef(EMPTY_STRING);
+  const menstruationLength = useRef(EMPTY_STRING);
   const scrollViewRef = useRef<ScrollView>(null);
 
   useEffect(() => {
-    if (currentPageIndex === 3) {
-      setTimeout(() => scrollViewRef.current?.scrollToEnd(), 500);
+    if (currentPageIndex === THIS_PAGE) {
+      setTimeout(() => scrollViewRef.current?.scrollToEnd(), SCROLL_TIMEOUT);
     }
   }, [currentPageIndex]);
 
@@ -58,7 +43,7 @@ export const PeriodInputScreen: React.FC<Props> = ({ onInputChange, currentPageI
   );
 
   const onPeriodLengthReject = useCallback((): void => {
-    menstruationLength.current = EMPTY_VALUE;
+    menstruationLength.current = EMPTY_STRING;
     handleSelection();
   }, [handleSelection]);
 
@@ -71,7 +56,7 @@ export const PeriodInputScreen: React.FC<Props> = ({ onInputChange, currentPageI
   );
 
   const onCycleLengthReject = useCallback((): void => {
-    cycleLength.current = EMPTY_VALUE;
+    cycleLength.current = EMPTY_STRING;
     handleSelection();
   }, [handleSelection]);
 

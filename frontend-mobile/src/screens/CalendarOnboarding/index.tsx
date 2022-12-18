@@ -7,12 +7,13 @@ import { useAppDispatch } from '@pf/hooks';
 import { toggleCalendarOnboardingStatus } from '@pf/reducers/settingsReducer';
 import { CalendarNavigatorScreenProps, CalendarRoutes } from '@pf/constants';
 
+const START_FROM_SECOND_SCREEN = 1;
 const { CALENDAR_ONBOARDING } = CalendarRoutes;
 type Props = CalendarNavigatorScreenProps<typeof CALENDAR_ONBOARDING>;
 
 export const CalendarOnboardingScreen: React.FC<Props> = ({ navigation }) => {
   const pagerViewRef = useRef<PagerView>(null);
-  const nextScreen = useRef(1);
+  const nextScreen = useRef(START_FROM_SECOND_SCREEN);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

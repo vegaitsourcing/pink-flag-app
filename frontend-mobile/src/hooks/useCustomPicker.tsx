@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { CustomPicker, PickerOption } from '@pf/components';
-import { Picker } from '@react-native-picker/picker';
 import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
 
 const FIRST_ELEMENT = 0;
@@ -30,7 +30,6 @@ export const useCustomPicker = ({
   onReject,
 }: Params): ReturnType => {
   const [isPickerVisible, setIsPickerVisible] = useState(false);
-  const androidPickerRef = useRef<Picker<any>>(null);
   const initialIndex = useMemo(() => initialValueIndex || FIRST_ELEMENT, [initialValueIndex]);
   const [selectedFilter, setSelectedFilter] = useState<PickerOption<any>>(options[initialIndex]);
 
@@ -72,7 +71,6 @@ export const useCustomPicker = ({
       hide={togglePickerModal}
       onSubmit={handleOnSubmit}
       onReject={handleOnReject}
-      ref={androidPickerRef}
     />
   );
 

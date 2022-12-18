@@ -1,28 +1,21 @@
-import React, { useCallback, useImperativeHandle, useRef, forwardRef, useMemo } from 'react';
+import React, { useCallback, useRef, forwardRef, useMemo } from 'react';
 import { BottomModal, ModalHeader } from '../BottomModal';
 import { StyledPrimaryButton, PickerContainer, StyledCustomText } from './styles';
-import { Picker } from '@react-native-picker/picker';
 import ScrollPicker from 'react-native-wheel-scrollview-picker';
 import { TransparentButton } from '../TransparentButton';
 import { useTheme } from '@emotion/react';
 import { Props, Ref } from './types';
 
+const ITEM_HEIGHT = 50;
+const WRAPPER_HEIGHT = 180;
+const HIGHLIGHT_BORDER_WIDTH = 2;
+
 export const CustomPicker = forwardRef<Ref, Props<unknown>>(
   ({ modalTitle, options, isVisible = false, hide, onSelect, onSubmit, onReject, initialValueIndex }, ref) => {
     const theme = useTheme();
-    const androidPickerRef = useRef<Picker<unknown>>(null);
     const selectedOptionIndex = useRef<number>(initialValueIndex);
     const pickerOptions = options.map(x => x.label);
     const highlightWidth = useMemo(() => options[0].label.length * 10 + 30, [options]);
-
-    useImperativeHandle(ref, () => ({
-      focus: () => {
-        androidPickerRef.current?.focus();
-      },
-      blur: () => {
-        androidPickerRef.current?.blur();
-      },
-    }));
 
     const handleOnSelect = useCallback(
       (_: string | number, itemIndex: number) => {
@@ -50,16 +43,16 @@ export const CustomPicker = forwardRef<Ref, Props<unknown>>(
         <PickerContainer>
           <ModalHeader content={modalTitle} />
           <ScrollPicker
-            dataSource={pickerOptions}
-            selectedIndex={selectedOptionIndex.current}
             renderItem={renderItem}
+            itemHeight={ITEM_HEIGHT}
+            dataSource={pickerOptions}
             onValueChange={handleOnSelect}
-            wrapperHeight={180}
-            wrapperColor={theme.colors.white}
-            itemHeight={50}
-            highlightColor={theme.colors.primary}
-            highlightBorderWidth={2}
+            wrapperHeight={WRAPPER_HEIGHT}
             highlightWidth={highlightWidth}
+            wrapperColor={theme.colors.white}
+            highlightColor={theme.colors.primary}
+            selectedIndex={selectedOptionIndex.current}
+            highlightBorderWidth={HIGHLIGHT_BORDER_WIDTH}
           />
           <StyledPrimaryButton content="Potvrdi" onPress={handleOnSubmit} />
           <TransparentButton content="Odustani" onPress={handleOnReject} />
