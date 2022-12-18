@@ -9,3 +9,5 @@ interface Props extends TextProps {
 export const CustomText: React.FC<Props> = ({ content, children, ...props }) => {
   return <StyledText {...props}>{content || children}</StyledText>;
 };
+
+export { type Props as CustomTextProps };

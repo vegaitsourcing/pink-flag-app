@@ -10,7 +10,7 @@ export const Container = styled.View`
 `;
 
 export const StyledCustomText = styled(CustomText)`
-  font-size: ${({ theme }) => theme.fontSize.$8};
-  line-height: ${({ theme }) => theme.lineHeight.$7};
+  font-size: ${({ theme }) => theme.fontSize.$9};
+  line-height: ${({ theme }) => theme.lineHeight.$8};
   font-weight: ${({ theme }) => theme.fontWeight.$700};
 `;

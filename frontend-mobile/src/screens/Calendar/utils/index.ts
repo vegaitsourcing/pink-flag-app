@@ -1,0 +1,1 @@
+export { checkSetup } from './checkSetup';

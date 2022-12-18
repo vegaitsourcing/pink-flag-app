@@ -8,7 +8,7 @@ import { AppTheme } from '@pf/theme';
 import { useGetFeaturedBlogQuery } from '@pf/services';
 import { BASE_URI } from '../../services/rootApi';
 import { ActivityIndicatorContainer } from '@pf/components';
-import { BlogNavigatorParams } from '@pf/constants';
+import { BlogNavigatorParams, IS_IOS } from '@pf/constants';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 
@@ -46,12 +46,20 @@ export const BlogModule: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  BlogCardStyle: {
-    shadowOffset: { width: 10, height: 10 },
-    shadowColor: 'black',
-    shadowOpacity: 1,
-    elevation: 3,
-  },
+  BlogCardStyle: IS_IOS
+    ? {
+        backgroundColor: 'white',
+        shadowRadius: 4.65,
+        shadowOffset: {
+          width: 0,
+          height: 3,
+        },
+        shadowOpacity: 0.25,
+      }
+    : {
+        backgroundColor: 'white',
+        elevation: 6,
+      },
   cardImage: {
     width: '100%',
     height: 180,

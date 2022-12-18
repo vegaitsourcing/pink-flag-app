@@ -17,16 +17,12 @@ module.exports = {
     ],
     'no-duplicate-imports': 'error',
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-  ],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
       extends: [
+        'eslint:recommended',
+        'plugin:react-hooks/recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
       ],
@@ -36,5 +32,5 @@ module.exports = {
       },
     },
   ],
-  ignorePatterns: ['.eslintrc.js'],
+  ignorePatterns: ['.eslintrc.js', 'babel.config.js'],
 };

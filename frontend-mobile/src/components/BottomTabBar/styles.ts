@@ -15,7 +15,7 @@ export const Container = styled.View`
   left: ${({ theme }) => theme.spacing.$1};
   right: ${({ theme }) => theme.spacing.$1};
   background-color: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.borderRadius.$2};
+  border-radius: ${({ theme }) => theme.borderRadius.$3};
 `;
 
 export const shadowStyles =

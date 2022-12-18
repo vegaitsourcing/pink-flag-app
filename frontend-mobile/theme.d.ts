@@ -21,14 +21,18 @@ interface ColorModel {
 interface Theme {
   colors: ColorModel;
   borderRadius: {
-    /** unit(16) */
+    /** unit(8) */
     $1: string;
-    /** 16 */
+    /** 8 */
     $1Number: number;
-    /** unit(24) */
+    /** unit(16) */
     $2: string;
-    /** 24 */
+    /** 16 */
     $2Number: number;
+    /** unit(24) */
+    $3: string;
+    /** 24 */
+    $3Number: number;
   };
   spacing: {
     /** unit(20) */
@@ -63,10 +67,12 @@ interface Theme {
     $5: string;
     /** unit(18) */
     $6: string;
-    /** unit(22) */
+    /** unit(20) */
     $7: string;
-    /** unit(24) */
+    /** unit(22) */
     $8: string;
+    /** unit(24) */
+    $9: string;
     /** value 10 */
     $1Number: number;
     /** value 12 */
@@ -79,10 +85,12 @@ interface Theme {
     $5Number: number;
     /** value 18 */
     $6Number: number;
-    /** value 22 */
+    /** value 20 */
     $7Number: number;
-    /** value 24 */
+    /** value 22 */
     $8Number: number;
+    /** value 24 */
+    $9Number: number;
   };
   lineHeight: {
     /** unit(12) */
@@ -95,10 +103,12 @@ interface Theme {
     $4: string;
     /** unit(25) */
     $5: string;
-    /** unit(30) */
+    /** unit(27) */
     $6: string;
-    /** unit(32) */
+    /** unit(30) */
     $7: string;
+    /** unit(32) */
+    $8: string;
   };
   fontWeight: {
     /** 100 */

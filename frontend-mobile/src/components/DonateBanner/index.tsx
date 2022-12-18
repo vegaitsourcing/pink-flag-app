@@ -19,7 +19,7 @@ export const DonateBanner: React.FC<Props> = () => {
     return StyleSheet.create({
       baseText: {
         fontWeight: 'bold',
-        fontSize: theme.fontSize.$8Number,
+        fontSize: theme.fontSize.$9Number,
         color: 'white',
         marginBottom: 10,
       },
@@ -40,7 +40,7 @@ export const DonateBanner: React.FC<Props> = () => {
         margin: theme.spacing.$1Number,
         padding: theme.spacing.$1Number,
       }}
-      imageStyle={{ borderRadius: theme.borderRadius.$1Number }}
+      imageStyle={{ borderRadius: theme.borderRadius.$2Number }}
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       source={require('../../assets/images/donation.png')}>
       {data.title && data.title.length > 0 && <CustomText style={styles.baseText}>{data.title}</CustomText>}
