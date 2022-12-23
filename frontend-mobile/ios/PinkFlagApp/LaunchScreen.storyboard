@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,32 +17,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PinkFlagApp" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
-                                <rect key="frame" x="0.0" y="202" width="375" height="43"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by React Native" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="MN2-I3-ftu">
-                                <rect key="frame" x="0.0" y="626" width="375" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TopWave" translatesAutoresizingMaskIntoConstraints="NO" id="RTx-b1-Z69">
+                                <rect key="frame" x="0.0" y="-26" width="375" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RTx-b1-Z69" secondAttribute="height" multiplier="375:128" id="rtF-RZ-TsL"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinkFlagLogo" translatesAutoresizingMaskIntoConstraints="NO" id="g7l-S7-Pyz">
+                                <rect key="frame" x="87" y="269" width="200" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="g7l-S7-Pyz" secondAttribute="height" multiplier="25:16" id="UnL-0A-eVa"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BottomWave" translatesAutoresizingMaskIntoConstraints="NO" id="Fow-HT-LIf">
+                                <rect key="frame" x="0.0" y="550" width="375" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Fow-HT-LIf" secondAttribute="height" multiplier="375:128" id="uSk-KO-R0f"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" image="VegaITLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Qkk-7X-a8Q">
+                                <rect key="frame" x="52" y="539" width="100" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Qkk-7X-a8Q" secondAttribute="height" multiplier="121:128" id="XZC-7C-lP9"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="2ba-6z-UPq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="MN2-I3-ftu" secondAttribute="bottom" constant="20" id="OZV-Vh-mqD"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="Q3B-4B-g5h"/>
-                            <constraint firstItem="MN2-I3-ftu" firstAttribute="centerX" secondItem="Bcu-3y-fUS" secondAttribute="centerX" id="akx-eg-2ui"/>
-                            <constraint firstItem="MN2-I3-ftu" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="i1E-0Y-4RG"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="bottom" multiplier="1/3" constant="1" id="moa-c2-u7t"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" symbolic="YES" id="x7j-FC-K8j"/>
+                            <constraint firstItem="RTx-b1-Z69" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="2ea-Ap-rvA"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="g7l-S7-Pyz" secondAttribute="bottom" constant="270" id="Hfq-tt-g9a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="g7l-S7-Pyz" secondAttribute="trailing" constant="72" id="TA2-rE-tWa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qkk-7X-a8Q" secondAttribute="trailing" constant="202" id="UeR-u6-825"/>
+                            <constraint firstAttribute="trailing" secondItem="RTx-b1-Z69" secondAttribute="trailing" id="VtY-2Z-Jjq"/>
+                            <constraint firstItem="g7l-S7-Pyz" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="269" id="Y8k-5E-l22"/>
+                            <constraint firstItem="g7l-S7-Pyz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="71" id="YOo-0D-6Qk"/>
+                            <constraint firstAttribute="bottom" secondItem="Fow-HT-LIf" secondAttribute="bottom" constant="-11" id="b53-Ke-EBc"/>
+                            <constraint firstItem="Qkk-7X-a8Q" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="20" id="lCu-bB-bTf"/>
+                            <constraint firstItem="Fow-HT-LIf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="nlb-LF-AYH"/>
+                            <constraint firstAttribute="trailing" secondItem="Fow-HT-LIf" secondAttribute="trailing" id="rNE-2R-XfT"/>
+                            <constraint firstItem="RTx-b1-Z69" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="-26" id="x20-Nl-Hxl"/>
+                            <constraint firstItem="Fow-HT-LIf" firstAttribute="top" secondItem="Qkk-7X-a8Q" secondAttribute="bottom" constant="-110" id="yWh-19-y2k"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BottomWave" width="500" height="143.5"/>
+        <image name="PinkFlagLogo" width="500" height="142.5"/>
+        <image name="TopWave" width="500" height="157.5"/>
+        <image name="VegaITLogo" width="500.5" height="326.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
