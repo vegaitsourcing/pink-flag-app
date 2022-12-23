@@ -8,9 +8,9 @@ import { store } from '@pf/store';
 import SplashScreen from 'react-native-splash-screen';
 
 const App: React.FC = () => {
-  // useEffect(() => {
-  //   SplashScreen.hide();
-  // }, []);
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
   return (
     <Provider store={store}>

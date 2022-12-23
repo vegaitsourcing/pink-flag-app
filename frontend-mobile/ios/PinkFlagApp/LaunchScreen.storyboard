@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,51 +12,47 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TopWave" translatesAutoresizingMaskIntoConstraints="NO" id="RTx-b1-Z69">
-                                <rect key="frame" x="0.0" y="-26" width="375" height="170"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinkFlagLogo" translatesAutoresizingMaskIntoConstraints="NO" id="rI1-Mr-OZa">
+                                <rect key="frame" x="94" y="21" width="187.5" height="625"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="RTx-b1-Z69" secondAttribute="height" multiplier="375:128" id="rtF-RZ-TsL"/>
+                                    <constraint firstAttribute="width" secondItem="rI1-Mr-OZa" secondAttribute="height" multiplier="0.3" id="9Z4-UM-dGz"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinkFlagLogo" translatesAutoresizingMaskIntoConstraints="NO" id="g7l-S7-Pyz">
-                                <rect key="frame" x="87" y="269" width="200" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="g7l-S7-Pyz" secondAttribute="height" multiplier="25:16" id="UnL-0A-eVa"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="TopWave" translatesAutoresizingMaskIntoConstraints="NO" id="pUZ-Mx-FxZ">
+                                <rect key="frame" x="0.0" y="-19" width="375" height="157.5"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BottomWave" translatesAutoresizingMaskIntoConstraints="NO" id="Fow-HT-LIf">
-                                <rect key="frame" x="0.0" y="550" width="375" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Fow-HT-LIf" secondAttribute="height" multiplier="375:128" id="uSk-KO-R0f"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" image="BottomWave" translatesAutoresizingMaskIntoConstraints="NO" id="579-mX-YPY">
+                                <rect key="frame" x="0.0" y="542" width="375" height="143.5"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" image="VegaITLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Qkk-7X-a8Q">
-                                <rect key="frame" x="52" y="539" width="100" height="128"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="VegaITLogo" translatesAutoresizingMaskIntoConstraints="NO" id="mv3-BD-sXl">
+                                <rect key="frame" x="54" y="572" width="94" height="61"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Qkk-7X-a8Q" secondAttribute="height" multiplier="121:128" id="XZC-7C-lP9"/>
+                                    <constraint firstAttribute="width" secondItem="mv3-BD-sXl" secondAttribute="height" multiplier="94:61" id="7Ek-bo-yAv"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="2ba-6z-UPq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="RTx-b1-Z69" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="2ea-Ap-rvA"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="g7l-S7-Pyz" secondAttribute="bottom" constant="270" id="Hfq-tt-g9a"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="g7l-S7-Pyz" secondAttribute="trailing" constant="72" id="TA2-rE-tWa"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Qkk-7X-a8Q" secondAttribute="trailing" constant="202" id="UeR-u6-825"/>
-                            <constraint firstAttribute="trailing" secondItem="RTx-b1-Z69" secondAttribute="trailing" id="VtY-2Z-Jjq"/>
-                            <constraint firstItem="g7l-S7-Pyz" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="269" id="Y8k-5E-l22"/>
-                            <constraint firstItem="g7l-S7-Pyz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="71" id="YOo-0D-6Qk"/>
-                            <constraint firstAttribute="bottom" secondItem="Fow-HT-LIf" secondAttribute="bottom" constant="-11" id="b53-Ke-EBc"/>
-                            <constraint firstItem="Qkk-7X-a8Q" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="20" id="lCu-bB-bTf"/>
-                            <constraint firstItem="Fow-HT-LIf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="nlb-LF-AYH"/>
-                            <constraint firstAttribute="trailing" secondItem="Fow-HT-LIf" secondAttribute="trailing" id="rNE-2R-XfT"/>
-                            <constraint firstItem="RTx-b1-Z69" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="-26" id="x20-Nl-Hxl"/>
-                            <constraint firstItem="Fow-HT-LIf" firstAttribute="top" secondItem="Qkk-7X-a8Q" secondAttribute="bottom" constant="-110" id="yWh-19-y2k"/>
+                            <constraint firstAttribute="trailing" secondItem="579-mX-YPY" secondAttribute="trailing" id="6hU-PR-xA8"/>
+                            <constraint firstItem="pUZ-Mx-FxZ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="BDI-Uy-qcV"/>
+                            <constraint firstItem="pUZ-Mx-FxZ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="-19" id="D5b-0h-XMp"/>
+                            <constraint firstItem="rI1-Mr-OZa" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="L75-cR-3EO"/>
+                            <constraint firstItem="579-mX-YPY" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Rxn-gn-CDc"/>
+                            <constraint firstItem="rI1-Mr-OZa" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.5" id="VEY-ca-z1x"/>
+                            <constraint firstItem="mv3-BD-sXl" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.25" constant="0.25" id="YLl-25-GRb"/>
+                            <constraint firstItem="mv3-BD-sXl" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="38" id="ZuO-ml-IiK"/>
+                            <constraint firstAttribute="trailing" secondItem="579-mX-YPY" secondAttribute="trailing" id="a1t-IY-1Bs"/>
+                            <constraint firstAttribute="trailing" secondItem="pUZ-Mx-FxZ" secondAttribute="trailing" id="aXV-w8-YNA"/>
+                            <constraint firstItem="rI1-Mr-OZa" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dnR-hk-gFP"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="mv3-BD-sXl" secondAttribute="bottom" constant="34" id="gYl-nU-ywz"/>
+                            <constraint firstAttribute="trailing" secondItem="pUZ-Mx-FxZ" secondAttribute="trailing" id="hT9-Db-Sks"/>
+                            <constraint firstAttribute="bottom" secondItem="579-mX-YPY" secondAttribute="bottom" constant="-19.5" id="hrf-58-OE3"/>
+                            <constraint firstItem="pUZ-Mx-FxZ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="mfh-Zf-zqC"/>
+                            <constraint firstItem="579-mX-YPY" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="zzU-oC-Lw2"/>
                         </constraints>
                     </view>
                 </viewController>
