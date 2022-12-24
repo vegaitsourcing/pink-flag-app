@@ -1,12 +1,12 @@
 import React from 'react';
-import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 import { BlogRoutes, BlogNavigatorParams } from '@pf/constants';
 import { BlogDetailsScreen, BlogScreen } from '@pf/screens';
-import { HeaderRight, HeaderTitle } from '@pf/components';
-import { header } from './styles';
+import { NavHeader } from '@pf/components';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 type StackNavigatorProps = React.ComponentProps<typeof Stack.Navigator>;
 
 const { BLOG, BLOG_DETAILS } = BlogRoutes;
@@ -26,17 +26,14 @@ const BlogNavigator: React.FC = (props: Partial<StackNavigatorProps>) => {
         name={BLOG}
         component={BlogScreen}
         options={{
-          headerStyle: header.layout,
-          headerTitle: () => <HeaderTitle></HeaderTitle>,
-          headerRight: () => <HeaderRight></HeaderRight>,
+          header: props => <NavHeader {...props} />,
         }}
       />
       <Stack.Screen
         name={BLOG_DETAILS}
         component={BlogDetailsScreen}
         options={{
-          headerTitle: () => <HeaderTitle></HeaderTitle>,
-          headerRight: () => <HeaderRight></HeaderRight>,
+          header: props => <NavHeader {...props} />,
         }}
       />
     </Stack.Navigator>

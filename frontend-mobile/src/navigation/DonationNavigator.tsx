@@ -1,12 +1,12 @@
 import React from 'react';
-import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 import { DonationRoutes, BlogNavigatorParams } from '@pf/constants';
 import { DonationScreen } from '@pf/screens';
-import { HeaderRight, HeaderTitle } from '@pf/components';
-import { header } from './styles';
+import { NavHeader } from '@pf/components';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 type StackNavigatorProps = React.ComponentProps<typeof Stack.Navigator>;
 
 const { DONATIONS } = DonationRoutes;
@@ -26,9 +26,7 @@ const DonationNavigator: React.FC = (props: Partial<StackNavigatorProps>) => {
         name={DONATIONS}
         component={DonationScreen}
         options={{
-          headerStyle: header.layout,
-          headerTitle: () => <HeaderTitle></HeaderTitle>,
-          headerRight: () => <HeaderRight></HeaderRight>,
+          header: props => <NavHeader {...props} />,
         }}
       />
     </Stack.Navigator>
