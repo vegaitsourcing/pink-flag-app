@@ -3,7 +3,8 @@ export const RootRoutes = {
   HOME_STACK: 'home_stack',
   BLOG_STACK: 'blog_stack',
   CALENDAR_STACK: 'calendar_stack',
-  DONATION: 'donation',
+  DONATION_STACK: 'donation_stack',
+  GENERAL_SETTINGS: 'general_settings',
 } as const;
 
 export const HomeRoutes = {
@@ -18,6 +19,7 @@ export const BlogRoutes = {
 export const CalendarRoutes = {
   CALENDAR: 'calendar',
   CALENDAR_ONBOARDING: 'calendar_onboarding',
+  CALENDAR_SETTINGS: 'calendar_settings',
 } as const;
 
 export const DonationRoutes = {

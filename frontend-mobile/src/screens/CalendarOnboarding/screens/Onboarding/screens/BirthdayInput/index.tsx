@@ -1,19 +1,9 @@
-import { BottomModal, CustomInput, TransparentButton } from '@pf/components';
+import { CustomInput, DatePickerModal } from '@pf/components';
 import { EMPTY_STRING } from '@pf/constants';
 import React, { useCallback, useRef, useState } from 'react';
 import { SvgBackground } from '../../components';
-import { BirthdayInputType, INITIAL_VALUE, LOCALE, MAX_DATE, MIN_DATE } from './constants';
-import {
-  Container,
-  StyledTitle,
-  InputContainer,
-  Separator,
-  PickerContainer,
-  StyledDatePicker,
-  StyledPrimaryButton,
-  ButtonWrapper,
-  BigButtonWrapper,
-} from './styles';
+import { BirthdayInputType, INITIAL_VALUE, MAX_DATE } from './constants';
+import { Container, StyledTitle, InputContainer, Separator, ButtonWrapper, BigButtonWrapper } from './styles';
 
 interface Props {
   onInputChange: (isValid: boolean) => void;
@@ -78,22 +68,14 @@ export const BirthdayInputScreen: React.FC<Props> = ({ onInputChange }) => {
           <CustomInput placeholder="Godina" value={dateInput.current.year} pointerEvents="none" editable={false} />
         </BigButtonWrapper>
       </InputContainer>
-      <BottomModal headerTitle="Izaberi datum" isVisible={isDatePickerVisible} hide={handleDateCancellation}>
-        <PickerContainer>
-          <StyledDatePicker
-            title={null}
-            androidVariant="nativeAndroid"
-            mode="date"
-            locale={LOCALE}
-            minimumDate={MIN_DATE}
-            maximumDate={MAX_DATE}
-            date={date}
-            onDateChange={handleOnDateChange}
-          />
-          <StyledPrimaryButton content="Potvrdi" onPress={handleDateConfirmation} />
-          <TransparentButton content="Odustani" onPress={handleDateCancellation} />
-        </PickerContainer>
-      </BottomModal>
+      <DatePickerModal
+        date={date}
+        isVisible={isDatePickerVisible}
+        hide={toggleDatePicker}
+        onDateChange={handleOnDateChange}
+        onPressCancel={handleDateCancellation}
+        onPressConfirm={handleDateConfirmation}
+      />
     </Container>
   );
 };
