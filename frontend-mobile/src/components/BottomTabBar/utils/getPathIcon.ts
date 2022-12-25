@@ -11,7 +11,7 @@ import {
 import { RootRoutes } from '@pf/constants';
 import { SvgProps } from 'react-native-svg';
 
-const { HOME_STACK, BLOG_STACK, CALENDAR_STACK, DONATION } = RootRoutes;
+const { HOME_STACK, BLOG_STACK, CALENDAR_STACK, DONATION_STACK } = RootRoutes;
 
 const ICONS = {
   [HOME_STACK]: HomeSvg,
@@ -20,8 +20,8 @@ const ICONS = {
   [BLOG_STACK + '_active']: BlogFilledSvg,
   [CALENDAR_STACK]: CalendarSvg,
   [CALENDAR_STACK + '_active']: CalendarFilledSvg,
-  [DONATION]: DonateSvg,
-  [DONATION + '_active']: DonateFilledSvg,
+  [DONATION_STACK]: DonateSvg,
+  [DONATION_STACK + '_active']: DonateFilledSvg,
 };
 
 export const getPathIcon = (path: string, isFocused: boolean): React.FC<SvgProps> => {

@@ -26,3 +26,5 @@ export { TransparentButton } from './TransparentButton';
 export { CustomPicker, type PickerOption } from './CustomPicker';
 export { WithSafeView } from './WithSafeView';
 export { NavHeader } from './NavHeader';
+export { CustomSwitch, type Ref as CustomSwitchRef } from './CustomSwitch';
+export { DatePickerModal } from './DatePickerModal';

@@ -1,12 +1,8 @@
 import styled from '@emotion/native';
-import { CustomText, CustomInput, PrimaryButton } from '@pf/components';
-import { WIDTH } from '@pf/constants';
+import { CustomText, CustomInput } from '@pf/components';
 import { unit } from '@pf/utils';
-import DatePicker from 'react-native-date-picker';
 
 const SPACING = 16;
-const BUTTON_SPACING = 10;
-const PICKER_OFFSET = 32;
 
 export const Container = styled.View`
   flex: 1;
@@ -40,18 +36,4 @@ export const Separator = styled.View`
 
 export const StyledCustomText = styled(CustomInput)`
   flex: 1.5;
-`;
-
-export const PickerContainer = styled.View`
-  align-items: center;
-  padding-bottom: ${({ theme }) => theme.spacing.$2};
-  padding-horizontal: ${({ theme }) => theme.spacing.$2};
-`;
-
-export const StyledPrimaryButton = styled(PrimaryButton)`
-  margin-vertical: ${unit(BUTTON_SPACING)};
-`;
-
-export const StyledDatePicker = styled(DatePicker)`
-  width: ${unit(WIDTH - PICKER_OFFSET)};
 `;

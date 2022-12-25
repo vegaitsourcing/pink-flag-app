@@ -15,10 +15,7 @@ const CalendarNavigator: React.FC = (props: Partial<StackNavigatorProps>) => {
   const handleOnSettingsPress = useCallback(() => navigate(CALENDAR_SETTINGS), [navigate]);
 
   return (
-    <Stack.Navigator
-      initialRouteName={CALENDAR}
-      screenOptions={{ headerShown: true, headerTitleAlign: 'center' }}
-      {...props}>
+    <Stack.Navigator initialRouteName={CALENDAR} screenOptions={{ headerShown: true }} {...props}>
       <Stack.Screen
         name={CALENDAR}
         component={CalendarScreen}
