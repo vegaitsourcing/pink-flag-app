@@ -21,11 +21,11 @@ import { getAddressScheme } from './getAddressScheme';
 const CURRENT_YEAR = new Date().getFullYear();
 const HIT_SLOP = { top: 2, left: 10, right: 10, bottom: 10 };
 
-//! <Button onPress={() => Linking.openURL('mailto:support@example.com') }
 export const Footer: React.FC = () => {
   const handleOnLocationPress = useCallback(() => {
     const addressScheme = getAddressScheme();
-    if (addressScheme) {
+
+    if (!addressScheme) {
       return;
     }
 
