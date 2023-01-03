@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
 
   return (
     <>
-      <Container resizeMode="cover" source={BackgroundImage}>
+      <Container resizeMode="stretch" source={BackgroundImage}>
         <Title content="Kontakt" />
         <DetailRow onPress={handleOnLocationPress}>
           <StyledLocationSvg />
