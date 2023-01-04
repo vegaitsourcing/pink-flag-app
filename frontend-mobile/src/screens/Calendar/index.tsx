@@ -4,24 +4,27 @@ import { CalendarExplanation, Footer, PinkFlagCalendar, Reminders, UserGreeting 
 import { Container, Content, ExplanationWrapper, getStyles } from './styles';
 import GreetingData from '../../assets/data/greeting.json';
 import { useTheme } from '@emotion/react';
-import { checkSetup } from './utils';
-import { CalendarNavigatorScreenProps, CalendarRoutes } from '@pf/constants';
+import { CalendarNavigatorScreenProps, CalendarRoutes, RootRoutes } from '@pf/constants';
+import { useAppSelector } from '@pf/hooks';
+import { selectUserName } from '@pf/reducers/userReducer';
+import { selectIsCalendarActivated } from '@pf/reducers/settingsReducer';
 
-const { CALENDAR, CALENDAR_ONBOARDING } = CalendarRoutes;
+const NAVIGATION_DELAY = 500;
+const { CALENDAR } = CalendarRoutes;
+const { CALENDAR_ONBOARDING } = RootRoutes;
 type Props = CalendarNavigatorScreenProps<typeof CALENDAR>;
 
 export const CalendarScreen: React.FC<Props> = ({ navigation: { navigate } }) => {
   const theme = useTheme();
   const inlineStyles = useMemo(() => getStyles(theme), [theme]);
+  const isCalendarActivated = useAppSelector(selectIsCalendarActivated);
+  const userName = useAppSelector(selectUserName) || '';
 
   useEffect(() => {
-    (async (): Promise<void> => {
-      const setupDone = await checkSetup();
-      if (!setupDone) {
-        navigate(CALENDAR_ONBOARDING);
-      }
-    })();
-  }, [navigate]);
+    if (!isCalendarActivated) {
+      setTimeout(() => navigate(CALENDAR_ONBOARDING), NAVIGATION_DELAY);
+    }
+  }, [isCalendarActivated, navigate]);
 
   return (
     <Container
@@ -29,20 +32,14 @@ export const CalendarScreen: React.FC<Props> = ({ navigation: { navigate } }) =>
       contentContainerStyle={inlineStyles.content}
       showsVerticalScrollIndicator={false}>
       <Content>
-        <UserGreeting name="Ana" description={GreetingData.description} />
+        <UserGreeting name={userName} description={GreetingData.description} />
         <Reminders />
         <PinkFlagCalendar />
         <ExplanationWrapper>
           <CalendarExplanation />
         </ExplanationWrapper>
       </Content>
-      <Footer
-        copyright="© 2022 Pink Flag. All rights reserved."
-        email="zenskainicijativa@gmail.com"
-        location="Trg Slobode 3, Novi Sad"
-        instagramLink="https://instagram.com"
-        facebookLink="https://facebook.com"
-      />
+      <Footer />
     </Container>
   );
 };

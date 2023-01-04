@@ -2,28 +2,28 @@ import { RootState } from '@pf/store';
 import { createSlice } from '@reduxjs/toolkit';
 
 interface SettingsState {
-  isCalendarOnboardingStarted?: boolean;
+  calendarActivated: boolean;
+  calendarNotificationsEnabled: boolean;
+  blogNotificationsEnabled: boolean;
 }
 
 const initialState: SettingsState = {
-  isCalendarOnboardingStarted: false,
+  calendarActivated: false,
+  calendarNotificationsEnabled: true,
+  blogNotificationsEnabled: true,
 };
 
 const settingsSlice = createSlice({
   name: 'settings',
   initialState,
-  reducers: {
-    toggleCalendarOnboardingStatus: state => {
-      state.isCalendarOnboardingStarted = !state.isCalendarOnboardingStarted;
-    },
-  },
+  reducers: {},
 });
 
-export const { toggleCalendarOnboardingStatus } = settingsSlice.actions;
+// export const {} = settingsSlice.actions;
 
 export const selectSettings = (state: RootState): SettingsState => state.settings;
 
-export const selectIsCalendarOnboardingStarted = (state: RootState): boolean | undefined =>
-  selectSettings(state).isCalendarOnboardingStarted;
+export const selectIsCalendarActivated = (state: RootState): boolean | undefined =>
+  selectSettings(state).calendarActivated;
 
 export default settingsSlice.reducer;
