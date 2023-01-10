@@ -15,6 +15,7 @@ services:
       DB_USER: "postgres"
       DB_PASSWORD: "postgres"
       DB_HOST: "db"
+    restart: always
 
   db:
     image: postgres:13.5-alpine
@@ -27,3 +28,4 @@ services:
       POSTGRES_HOST_AUTH_METHOD: "trust"
     volumes:
       - ".:/app:rw"
+    restart: always
