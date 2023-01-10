@@ -11,12 +11,15 @@ services:
       DB_USER: "#{DB_USERNAME}#"
       DB_PASSWORD: "#{DB_PASSWORD}#"
       DB_HOST: "db"
+    restart: always
+    depends_on:
+      - db
 
   db:
     image: postgres:13.5-alpine
     container_name: pink-flag-db
     ports:
-      - "5432:5432/tcp"
+      - "5432/tcp"
     environment:
       POSTGRES_DB: "db"
       POSTGRESS_USER: "#{DB_USERNAME}#"
@@ -24,3 +27,4 @@ services:
       POSTGRES_HOST_AUTH_METHOD: "trust"
     volumes:
       - ".:/app:rw"
+    restart: always
