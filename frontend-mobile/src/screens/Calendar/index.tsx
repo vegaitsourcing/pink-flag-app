@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useEffect, useMemo } from 'react';
-import { CalendarExplanation, Footer, PinkFlagCalendar, Reminders, UserGreeting } from '@pf/components';
-import { Container, Content, ExplanationWrapper, getStyles } from './styles';
+import { CalendarExplanation, Footer, Reminders, UserGreeting } from '@pf/components';
+import { Container, Content, ExplanationWrapper, getStyles, StyledPinkFlagCalendar } from './styles';
 import GreetingData from '../../assets/data/greeting.json';
 import { useTheme } from '@emotion/react';
 import { CalendarNavigatorScreenProps, CalendarRoutes, RootRoutes } from '@pf/constants';
@@ -34,7 +34,7 @@ export const CalendarScreen: React.FC<Props> = ({ navigation: { navigate } }) =>
       <Content>
         <UserGreeting name={userName} description={GreetingData.description} />
         <Reminders />
-        <PinkFlagCalendar />
+        <StyledPinkFlagCalendar />
         <ExplanationWrapper>
           <CalendarExplanation />
         </ExplanationWrapper>
